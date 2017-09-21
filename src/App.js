@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import LoginPage from "./Pages/LoginPage/LoginPage";
 
 class App extends Component {
-  render() {
-    return (
-      <div>
-          fede
-      </div>
-    );
-  }
+    render() {
+        return (
+            <LoginPage/>
+        );
+    }
 }
 
 export default App;
