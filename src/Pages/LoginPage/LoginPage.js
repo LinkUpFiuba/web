@@ -11,7 +11,7 @@ class LoginPage extends Component {
           <LinkUpLogo proportion="200" />
         </div>
         <div className={styles.title}>
-          <h1> Link Up </h1>
+          <h1>Link Up</h1>
         </div>
         <LoginForm auth={this.props.auth} />
       </div>

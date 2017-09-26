@@ -1,11 +1,12 @@
-.form{
-    color: black;
-    background-color: #F4F5F6;
-    padding: 30px 50px;
-    border-radius: 4px;
-    margin-top: 10px;
+.form {
+  color: black;
+  background-color: #f4f5f6;
+  padding: 30px 50px;
+  border-radius: 4px;
+  margin-top: 10px;
+  min-width: 25%;
 }
 
 .button {
-    display: inline-block;
+  display: inline-block;
 }

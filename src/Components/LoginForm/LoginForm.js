@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Button, ControlLabel, FormControl, FormGroup } from 'react-bootstrap';
 import styles from './LoginForm.css';
 import { Redirect } from 'react-router-dom';
+import ErrorText from '../ErrorText/ErrorText';
+import { adminPass, adminUser } from '../../Constants';
 
 class LoginForm extends Component {
   constructor(props) {
@@ -9,20 +11,27 @@ class LoginForm extends Component {
     this.state = {
       username: '',
       password: '',
-      redirectToReferrer: false
+      redirectToReferrer: false,
+      error: false
     };
   }
 
   handleUserChange = e => {
-    this.setState({ username: e.target.value });
+    this.setState({ username: e.target.value, error: false });
   };
 
   handleOnClick = () => {
-    this.setState({ redirectToReferrer: true });
+    if (
+      this.state.username === adminUser &&
+      this.state.password === adminPass
+    ) {
+      this.setState({ redirectToReferrer: true });
+    }
+    this.setState({ error: true });
   };
 
   handlePasswordChange = e => {
-    this.setState({ password: e.target.value });
+    this.setState({ password: e.target.value, error: false });
   };
 
   render() {
@@ -58,6 +67,9 @@ class LoginForm extends Component {
           <Button onClick={this.handleOnClick} title="Ingresar">
             Ingresar
           </Button>
+          {this.state.error && (
+            <ErrorText text="La combinacion de usuarios/contraseña es incorrecta" />
+          )}
         </div>
       </div>
     );

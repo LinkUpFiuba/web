@@ -35,6 +35,7 @@ const auth = {
   }
 };
 
+// It will vee deleted in the next commit
 const AuthButton = withRouter(
   ({ history }) =>
     auth.isAuthenticated ? (
