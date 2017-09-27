@@ -1,7 +1,7 @@
-import React from 'react';
-import { Navbar, NavItem } from 'react-bootstrap';
-import Nav from 'react-bootstrap/es/Nav';
-import { Component } from 'react/lib/ReactBaseClasses';
+import React from 'react'
+import { Navbar, NavItem } from 'react-bootstrap'
+import Nav from 'react-bootstrap/es/Nav'
+import { Component } from 'react/lib/ReactBaseClasses'
 
 class FullNavBar extends Component {
   render() {
@@ -31,8 +31,8 @@ class FullNavBar extends Component {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-    );
+    )
   }
 }
 
-export default FullNavBar;
+export default FullNavBar

@@ -1,44 +1,44 @@
-import React, { Component } from 'react';
-import { Button, ControlLabel, FormControl, FormGroup } from 'react-bootstrap';
-import styles from './LoginForm.css';
-import { Redirect } from 'react-router-dom';
-import ErrorText from '../ErrorText/ErrorText';
-import { adminPass, adminUser } from '../../Constants';
+import React, { Component } from 'react'
+import { Button, ControlLabel, FormControl, FormGroup } from 'react-bootstrap'
+import styles from './LoginForm.css'
+import { Redirect } from 'react-router-dom'
+import ErrorText from '../ErrorText/ErrorText'
+import { adminPass, adminUser } from '../../Constants'
 
 class LoginForm extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       username: '',
       password: '',
       redirectToReferrer: false,
       error: false
-    };
+    }
   }
 
   handleUserChange = e => {
-    this.setState({ username: e.target.value, error: false });
-  };
+    this.setState({ username: e.target.value, error: false })
+  }
 
   handleOnClick = () => {
     if (
       this.state.username === adminUser &&
       this.state.password === adminPass
     ) {
-      this.setState({ redirectToReferrer: true });
+      this.setState({ redirectToReferrer: true })
     }
-    this.setState({ error: true });
-  };
+    this.setState({ error: true })
+  }
 
   handlePasswordChange = e => {
-    this.setState({ password: e.target.value, error: false });
-  };
+    this.setState({ password: e.target.value, error: false })
+  }
 
   render() {
-    const redirectToReferrer = this.state.redirectToReferrer;
+    const redirectToReferrer = this.state.redirectToReferrer
     if (redirectToReferrer) {
-      this.props.auth.authenticate();
-      return <Redirect to={'/usersList'} />;
+      this.props.auth.authenticate()
+      return <Redirect to={'/usersList'} />
     }
 
     return (
@@ -72,8 +72,8 @@ class LoginForm extends Component {
           )}
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default LoginForm;
+export default LoginForm

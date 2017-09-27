@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import styles from './LoginPage.css';
-import LinkUpLogo from '../../Components/LinkUpLogo';
-import LoginForm from '../../Components/LoginForm/LoginForm';
+import React, { Component } from 'react'
+import styles from './LoginPage.css'
+import LinkUpLogo from '../../Components/LinkUpLogo'
+import LoginForm from '../../Components/LoginForm/LoginForm'
 
 class LoginPage extends Component {
   render() {
@@ -15,8 +15,8 @@ class LoginPage extends Component {
         </div>
         <LoginForm auth={this.props.auth} />
       </div>
-    );
+    )
   }
 }
 
-export default LoginPage;
+export default LoginPage

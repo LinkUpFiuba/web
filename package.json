@@ -51,17 +51,9 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "precommit": "lint-staged",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": [
-      "prettier --single-quote --write",
-      "es-lint --fix",
-      "git add"
-    ]
   },
   "jest": {
     "collectCoverageFrom": [
