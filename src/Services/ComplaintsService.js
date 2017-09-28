@@ -1,5 +1,4 @@
-//WIP
-const baseUrl = 'http://localhost:5000'
+const baseUrl = process.env.BASEURL || 'http://localhost:5000'
 
 export const loadComplaints = () => {
     return fetch(baseUrl + '/complaints')
