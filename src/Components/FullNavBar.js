@@ -4,7 +4,12 @@ import Nav from 'react-bootstrap/es/Nav'
 import { Component } from 'react/lib/ReactBaseClasses'
 
 class FullNavBar extends Component {
-  render() {
+
+  handleSelect = () => {
+    this.props.auth.signout( () => this.props.history.push( '/' ) )
+  }
+
+  render () {
     return (
       <Navbar inverse collapseOnSelect>
         <Navbar.Header>
@@ -21,12 +26,9 @@ class FullNavBar extends Component {
               Link
             </NavItem>
           </Nav>
-          <Nav pullRight>
-            <NavItem eventKey={1} href="#">
-              Link Right
-            </NavItem>
-            <NavItem eventKey={2} href="#">
-              Link Right
+          <Nav pullRight onSelect={this.handleSelect}>
+            <NavItem eventKey={3}>
+              Sign Out
             </NavItem>
           </Nav>
         </Navbar.Collapse>

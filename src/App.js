@@ -11,9 +11,8 @@ import UsersListPage from './Pages/UsersListPage/UsersListPage';
 const App = () => (
   <Router>
     <div>
-      <AuthButton />
       <Route path="/login" render={() => <LoginPage auth={auth} />} />
-      <PrivateRoute path="/usersList" component={UsersListPage} />
+      <PrivateRoute path="/usersList" componentProps={{auth:auth}} component={UsersListPage} />
       <PrivateRoute path="//" component={Home} />
     </div>
   </Router>
@@ -25,7 +24,8 @@ const Home = () => {
 };
 
 const auth = {
-  isAuthenticated: false,
+    //CAMBIAR
+  isAuthenticated: true,
   authenticate(cb) {
     this.isAuthenticated = true;
   },
@@ -35,31 +35,13 @@ const auth = {
   }
 };
 
-// It will be deleted in the next commit
-const AuthButton = withRouter(
-  ({ history }) =>
-    auth.isAuthenticated ? (
-      <p>
-        Welcome!
-        <button
-          onClick={() => {
-            auth.signout(() => history.push('/'));
-          }}
-        >
-          Sign out
-        </button>
-      </p>
-    ) : (
-      <div />
-    )
-);
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
+const PrivateRoute = ({ componentProps: componentProps, component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props =>
       auth.isAuthenticated ? (
-        <Component {...props} />
+        <Component {...componentProps} {...props} />
       ) : (
         <Redirect
           to={{

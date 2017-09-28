@@ -7,9 +7,15 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    height: 100%;
+}
+
+body{
+    background-color: #E00051;
 }
 
 .title {
     color: white;
     border-color: black;
 }
+
