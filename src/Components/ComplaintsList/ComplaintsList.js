@@ -6,23 +6,10 @@ import {Link} from "react-router-dom";
 class ComplaintsList extends Component {
     render() {
 
-        const data = [{
-            user: 'Tanner Linsley',
-            age: 26,
-            sex: 'Male',
-            pending: 10,
-            id: 1
-        },{
-            user: 'Tanner Linsley',
-            age: 6,
-            sex: 'Male',
-            pending: 15,
-            id: 2
-        }]
 
         const columns = [{
             Header: 'Usuario',
-            accessor: 'user' // String-based value accessors!
+            accessor: 'name' // String-based value accessors!
         }, {
             Header: 'Edad',
             accessor: 'age',
@@ -34,13 +21,13 @@ class ComplaintsList extends Component {
             accessor: 'pending',
             Cell: props => <div className={styles.pending}>{props.value}</div>
         }, {
-            accessor: 'id',
+            accessor: 'uid',
             Cell: props => <Link to={'/usersList/'+props.value}>Ver Denuncias</Link>
         }]
 
         return (
             <ReactTable
-                data={data}
+                data={this.props.complaints}
                 columns={columns}
             />
         )
