@@ -12,7 +12,7 @@ const App = () => (
   <Router>
     <div>
       <Route path="/login" render={() => <LoginPage auth={auth} />} />
-      <PrivateRoute path="/usersList"  componentProps={{auth:auth}} component={UsersListPage} />
+      <PrivateRoute path="/usersList" componentProps={{auth:auth}} component={UsersListPage} />
       <PrivateRoute path="//" component={Home} />
     </div>
   </Router>
@@ -36,7 +36,7 @@ const auth = {
 };
 
 
-const PrivateRoute = ({componentProps: componentProps, component: Component, ...rest }) => (
+const PrivateRoute = ({ componentProps: componentProps, component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props =>

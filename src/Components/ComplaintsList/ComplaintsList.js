@@ -1,12 +1,10 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import ReactTable from 'react-table'
 import styles from './ComplaintsList.css'
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class ComplaintsList extends Component {
     render() {
-
-
         const columns = [{
             Header: 'Usuario',
             accessor: 'name' // String-based value accessors!

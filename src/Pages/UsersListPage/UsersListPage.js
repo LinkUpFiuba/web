@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import FullNavBar from "../../Components/FullNavBar";
 import styles from "./usersListPage.css"
 import ComplaintsList from "../../Components/ComplaintsList/ComplaintsList";
-import {loadComplaints} from "../../Services/ComplaintsService";
+import { loadComplaints } from "../../Services/ComplaintsService";
 
 class UsersListPage extends Component {
 
@@ -13,8 +13,8 @@ class UsersListPage extends Component {
 
     componentDidMount = () => {
         loadComplaints()
-            .then(complaints => this.setState({complaints}))
-            .then(() => this.setState({ready: true}))
+            .then(complaints => this.setState({ complaints }))
+            .then(() => this.setState({ ready: true }))
     };
 
     render() {
