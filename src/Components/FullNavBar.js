@@ -5,8 +5,16 @@ import { Component } from 'react/lib/ReactBaseClasses'
 
 class FullNavBar extends Component {
 
-  handleSelect = () => {
+  complaintsRoute = 'complaints'
+
+  handleSignOut = () => {
     this.props.auth.signout( () => this.props.history.push( '/' ) )
+  }
+
+  handleSelect = event => {
+    if ( event === this.complaintsRoute ) {
+      this.props.history.push('/usersList')
+    }
   }
 
   render () {
@@ -18,15 +26,15 @@ class FullNavBar extends Component {
           </Navbar.Brand>
         </Navbar.Header>
         <Navbar.Collapse>
-          <Nav>
-            <NavItem eventKey={1} href="#">
-              Link
+          <Nav onSelect={this.handleSelect}>
+            <NavItem eventKey={this.complaintsRoute}>
+              Complaints
             </NavItem>
-            <NavItem eventKey={2} href="#">
+            <NavItem eventKey={2}>
               Link
             </NavItem>
           </Nav>
-          <Nav pullRight onSelect={this.handleSelect}>
+          <Nav pullRight onSelect={this.handleSignOut}>
             <NavItem eventKey={3}>
               Sign Out
             </NavItem>
