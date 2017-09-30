@@ -1,8 +1,14 @@
-const baseUrl = process.env.BASEURL || 'http://localhost:5000'
+// const baseUrl = 'http://localhost:5000'
+const baseUrl = 'https://dev-link-up-g1.herokuapp.com'
 
 export const loadComplaints = () => {
-  console.log( process.env )
-  return fetch( baseUrl + '/complaints' )
+  return fetch( baseUrl + '/complaints')
+    .then( handleErrors )
+    .then( res => res.json() )
+}
+
+export const loadComplaintsForUser = (userUid) => {
+  return fetch( baseUrl + '/complaints/' + userUid )
     .then( handleErrors )
     .then( res => res.json() )
 }

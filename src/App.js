@@ -4,7 +4,6 @@ import {
   BrowserRouter as Router,
   Route,
   Redirect,
-  withRouter
 } from 'react-router-dom';
 import UsersListPage from './Pages/UsersListPage/UsersListPage';
 import ComplaintUserPage from './Pages/ComplaintUserPage/ComplaintUserPage'
@@ -26,8 +25,7 @@ const Home = () => {
 };
 
 const auth = {
-    //CAMBIAR
-  isAuthenticated: true,
+  isAuthenticated: false,
   authenticate(cb) {
     this.isAuthenticated = true;
   },
