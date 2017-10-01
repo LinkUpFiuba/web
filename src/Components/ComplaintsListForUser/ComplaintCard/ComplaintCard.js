@@ -5,6 +5,10 @@ import { Button } from 'react-bootstrap'
 
 class ComplaintCard extends Component {
 
+  handleOnClickReject = () => {
+    this.props.reject(this.props.complaint.complaintId)
+  }
+
   translateComplaint ( complaint ) {
     complaint.state = translateState( complaint.state )
     complaint.gender = translateGender( complaint.sex )
@@ -21,7 +25,7 @@ class ComplaintCard extends Component {
         <h5>Genero Denunciante: { complaint.gender }</h5>
         <div>Mensaje: { complaint.message }</div>
         { complaint.state === 'Pendiente' && <div className={styles.buttons}>
-          <Button className={styles.button}>Rechazar</Button>
+          <Button onClick={this.handleOnClickReject} className={styles.button}>Rechazar</Button>
           <Button className={styles.button}>Aceptar</Button>
         </div> }
       </div>

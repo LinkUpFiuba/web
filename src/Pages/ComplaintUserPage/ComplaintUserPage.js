@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import FullNavBar from '../../Components/FullNavBar'
 import ComplaintsListForUser from '../../Components/ComplaintsListForUser/ComplaintsListForUser'
 import styles from './ComplaintUserPage.css'
-import { loadComplaintsForUser } from '../../Services/ComplaintsService'
+import { loadComplaintsForUser, rejectComplaint } from '../../Services/ComplaintsService'
 import UserCard from '../../Components/UserCard/UserCard'
 import { Link } from 'react-router-dom'
 
@@ -20,6 +20,12 @@ class ComplaintUserPage extends Component {
       .then( () => this.setState( { ready: true } ) )
   }
 
+  reject = ( complaintId ) => {
+    rejectComplaint( this.state.actualUser.Uid, complaintId )
+    this.setState( { ready: false } )
+    this.componentDidMount()
+  }
+
   render () {
     const userId = this.props.match.params.userId
     return (
@@ -34,7 +40,7 @@ class ComplaintUserPage extends Component {
             </h2>
             {this.state.ready && <UserCard user={this.state.actualUser}/> }
           </div>
-          {this.state.ready && <ComplaintsListForUser complaints={this.state.complaints}/>}
+          {this.state.ready && <ComplaintsListForUser reject={this.reject} complaints={this.state.complaints}/>}
         </div>
       </div>
     )

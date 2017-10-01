@@ -3,10 +3,11 @@ import ComplaintCard from './ComplaintCard/ComplaintCard'
 import styles from './ComplaintsListForUser.css'
 
 class ComplaintsListForUser extends Component {
+
   render () {
 
     const allComplaints = this.props.complaints.map(complaint =>
-      <ComplaintCard complaint={complaint}/>
+      <ComplaintCard reject={this.props.reject} complaint={complaint}/>
     );
 
     return (
