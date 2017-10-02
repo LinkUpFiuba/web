@@ -14,7 +14,6 @@ class ComplaintsListForUser extends Component {
       <div className={styles.board}>
         {allComplaints}
       </div>
-
     )
   }
 }

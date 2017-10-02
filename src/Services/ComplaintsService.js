@@ -2,23 +2,22 @@
 const baseUrl = 'https://dev-link-up-g1.herokuapp.com'
 
 export const loadComplaints = () => {
-  return fetch( baseUrl + '/complaints')
+  return fetch( `${baseUrl}/complaints` )
     .then( handleErrors )
     .then( res => res.json() )
 }
 
-export const loadComplaintsForUser = (userUid) => {
-  return fetch( baseUrl + '/complaints/' + userUid)
+export const loadComplaintsForUser = ( userUid ) => {
+  return fetch( `${baseUrl}/complaints/${userUid}` )
     .then( handleErrors )
     .then( res => res.json() )
 }
 
-export const rejectComplaint = (userUid, complaintUid) => {
-  return fetch( baseUrl + '/complaints/' + userUid + '/complaint/' + complaintUid + '/reject', {method: 'POST'})
+export const rejectComplaint = ( userUid, complaintUid ) => {
+  return fetch( `${baseUrl}/complaints/${userUid}/complaint/${complaintUid}/reject`, { method: 'POST' } )
     .then( handleErrors )
     .then( res => res.json() )
 }
-
 
 function handleErrors ( response ) {
   if ( !response.ok ) {
