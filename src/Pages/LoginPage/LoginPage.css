@@ -1,17 +1,22 @@
 .logo {
-    margin-top: 30px;
+    background-color: #E00051;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
-.wrapper{
+.wrapper {
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
     height: 100%;
+    background-color: #E00051;
+    position: absolute;
+    width: 100%;
+    padding-top: 50px;
 }
 
-body{
-    background-color: #E00051;
+body {
+    background-color: #e3e4e5;
 }
 
 .title {

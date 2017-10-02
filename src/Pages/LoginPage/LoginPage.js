@@ -4,16 +4,16 @@ import LinkUpLogo from '../../Components/LinkUpLogo'
 import LoginForm from '../../Components/LoginForm/LoginForm'
 
 class LoginPage extends Component {
-  render() {
+  render () {
     return (
       <div className={styles.wrapper}>
         <div className={styles.logo}>
-          <LinkUpLogo proportion="200" />
+          <LinkUpLogo proportion="200"/>
         </div>
         <div className={styles.title}>
           <h1>Link Up</h1>
         </div>
-        <LoginForm auth={this.props.auth} />
+        <LoginForm auth={this.props.auth}/>
       </div>
     )
   }
