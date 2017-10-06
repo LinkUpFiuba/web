@@ -5,6 +5,7 @@ import styles from './ComplaintUserPage.css'
 import { disableUser, enableUser, loadComplaintsForUser } from '../../Services/ComplaintsService'
 import UserCard from './UserCard/UserCard'
 import { Link } from 'react-router-dom'
+import Loading from '../../Components/Loading/Loading'
 
 class ComplaintUserPage extends Component {
 
@@ -43,6 +44,8 @@ class ComplaintUserPage extends Component {
                 ⟵Volver
               </h2>
             </Link>
+            {!this.state.ready &&
+            <Loading message="Cargando usuario" size="150"/> }
             {this.state.ready && <UserCard user={this.state.actualUser}/> }
             <div className={styles.button}>
               {this.state.ready && this.state.actualUser.condition === 'Disabled' &&
