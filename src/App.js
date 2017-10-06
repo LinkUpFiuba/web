@@ -25,7 +25,8 @@ const Home = () => {
 };
 
 const auth = {
-  isAuthenticated: false,
+  //CAMBIAR
+  isAuthenticated: true,
   authenticate(cb) {
     this.isAuthenticated = true;
   },

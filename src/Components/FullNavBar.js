@@ -22,13 +22,13 @@ class FullNavBar extends Component {
       <Navbar inverse collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="#">Link Up Admin Page</a>
+            <a href="#">Link Up Administrador</a>
           </Navbar.Brand>
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav onSelect={this.handleSelect}>
             <NavItem eventKey={this.complaintsRoute}>
-              Complaints
+              Denuncias
             </NavItem>
             <NavItem eventKey={2}>
               Link
@@ -36,7 +36,7 @@ class FullNavBar extends Component {
           </Nav>
           <Nav pullRight onSelect={this.handleSignOut}>
             <NavItem eventKey={3}>
-              Sign Out
+              Cerrar Sesion
             </NavItem>
           </Nav>
         </Navbar.Collapse>

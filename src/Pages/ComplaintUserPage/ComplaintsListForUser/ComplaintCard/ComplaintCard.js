@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styles from './ComplaintCard.css'
-import { translateGender, translateState } from '../../../Services/TranslateService'
+import { translateGender, translateState } from '../../../../Services/TranslateService'
 import { Button } from 'react-bootstrap'
 
 class ComplaintCard extends Component {
@@ -24,10 +24,6 @@ class ComplaintCard extends Component {
         <h5>Edad Denunciante: { complaint.age }</h5>
         <h5>Genero Denunciante: { complaint.gender }</h5>
         <div>Mensaje: { complaint.message }</div>
-        { complaint.state === 'Pendiente' && <div className={styles.buttons}>
-          <Button onClick={this.handleOnClickReject} className={styles.button}>Rechazar</Button>
-          <Button className={styles.button}>Aceptar</Button>
-        </div> }
       </div>
     )
   }
