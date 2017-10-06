@@ -21,18 +21,16 @@ class ComplaintUserPage extends Component {
   }
 
   handleEnableUser = () => {
-    enableUser(this.props.match.params.userId )
-      this.setState( { ready: false } )
-      this.componentDidMount()
-  }
-
-  handleDisenableUser = () => {
-    disableUser(this.props.match.params.userId )
+    enableUser( this.props.match.params.userId )
     this.setState( { ready: false } )
     this.componentDidMount()
   }
 
-
+  handleDisableUser = () => {
+    disableUser( this.props.match.params.userId )
+    this.setState( { ready: false } )
+    this.componentDidMount()
+  }
 
   render () {
     return (
@@ -47,12 +45,12 @@ class ComplaintUserPage extends Component {
             </Link>
             {this.state.ready && <UserCard user={this.state.actualUser}/> }
             <div className={styles.button}>
-            {this.state.ready && this.state.actualUser.condition === 'Disabled' &&
+              {this.state.ready && this.state.actualUser.condition === 'Disabled' &&
               <button onClick={this.handleEnableUser}>
                 Habilitar Usuario
               </button>}
               {this.state.ready && this.state.actualUser.condition === 'Active' &&
-              <button onClick={this.handleDisenableUser}>
+              <button onClick={this.handleDisableUser}>
                 Deshabilitar Usuario
               </button>}
             </div>

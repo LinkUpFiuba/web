@@ -8,7 +8,7 @@ class UserCard extends Component{
     const gender = translateGender(this.props.user.gender)
     const condition = translateCondition(this.props.user.condition)
     return (
-      <h1>{userName}, {age}, {gender}  {condition}</h1>
+      <h1>{userName}, {age}, {gender},    Usuario {condition}</h1>
     )
   }
 }
