@@ -53,7 +53,6 @@ class ComplaintUserPage extends Component {
             {this.state.ready &&
             <UserCard user={this.state.actualUser}/> }
             <div className={styles.button}>
-              {console.log( this.state.actualUser.condition )}
               {this.state.ready && this.state.actualUser.condition === 'Disabled' &&
               <Button bsStyle="success" bsSize="large" onClick={this.handleEnableUser}>
                 Habilitar Usuario
