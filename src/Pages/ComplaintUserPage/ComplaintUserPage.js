@@ -23,15 +23,17 @@ class ComplaintUserPage extends Component {
   }
 
   handleEnableUser = () => {
-    enableUser( this.props.match.params.userId )
     this.setState( { ready: false } )
-    this.componentDidMount()
+    enableUser( this.props.match.params.userId ).then( () => {
+      this.componentDidMount()
+    } )
   }
 
   handleDisableUser = () => {
-    disableUser( this.props.match.params.userId )
     this.setState( { ready: false } )
-    this.componentDidMount()
+    disableUser( this.props.match.params.userId ).then( () => {
+      this.componentDidMount()
+    })
   }
 
   render () {
@@ -40,7 +42,7 @@ class ComplaintUserPage extends Component {
         <FullNavBar auth={this.props.auth} history={this.props.history}/>
         <div className={styles.body}>
           {!this.state.ready &&
-          <Loading message="Cargando usuario" size="150"/> }
+          <Loading message="Cargando usuario" size={150}/> }
           <div className={styles.title}>
             {this.state.ready &&
             <Link to='/usersList'>
@@ -51,12 +53,13 @@ class ComplaintUserPage extends Component {
             {this.state.ready &&
             <UserCard user={this.state.actualUser}/> }
             <div className={styles.button}>
+              {console.log( this.state.actualUser.condition )}
               {this.state.ready && this.state.actualUser.condition === 'Disabled' &&
-              <Button bsStyle="success" bsSize="medium" onClick={this.handleEnableUser}>
+              <Button bsStyle="success" bsSize="large" onClick={this.handleEnableUser}>
                 Habilitar Usuario
               </Button>}
               {this.state.ready && this.state.actualUser.condition === 'Active' &&
-              <Button bsStyle="danger" bsSize="medium" onClick={this.handleDisableUser}>
+              <Button bsStyle="danger" bsSize="large" onClick={this.handleDisableUser}>
                 Deshabilitar Usuario
               </Button>}
             </div>

@@ -5,30 +5,30 @@ const baseUrl = 'https://link-up-g1.herokuapp.com'
 export const loadComplaints = () => {
   return fetch( `${baseUrl}/complaints` )
     .then( handleErrors )
-    .then( res => res.json() )
+    .then( res => res.json())
 }
 
 export const loadComplaintsForUser = ( userUid ) => {
   return fetch( `${baseUrl}/complaints/${userUid}` )
     .then( handleErrors )
-    .then( res => res.json() )
+    .then( res => {
+      return res.json()
+    })
 }
 
 export const disableUser = ( userUid ) => {
   return fetch( `${baseUrl}/users/${userUid}/disable`, { method: 'POST' } )
     .then( handleErrors )
-    .then( res => res.json() )
 }
 
 export const enableUser = ( userUid ) => {
   return fetch( `${baseUrl}/users/${userUid}/enable`, { method: 'POST' } )
     .then( handleErrors )
-    .then( res => res.json() )
 }
 
 function handleErrors ( response ) {
   if ( !response.ok ) {
-    console.log(response)
+    // console.log(response)
     if ( response.status === 404 ) {
       throw { status: response.status, message: response.message }
     }

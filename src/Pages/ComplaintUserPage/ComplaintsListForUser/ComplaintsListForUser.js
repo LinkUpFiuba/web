@@ -10,7 +10,7 @@ class ComplaintsListForUser extends Component {
       const dateB = new Date(b.timeStamp.replace(/-/g, "/"))
       return dateB - dateA;
     }).map(complaint =>
-      <ComplaintCard reject={this.props.reject} complaint={complaint}/>
+      <ComplaintCard key={complaint.complaintId} reject={this.props.reject} complaint={complaint}/>
     );
 
     return (
