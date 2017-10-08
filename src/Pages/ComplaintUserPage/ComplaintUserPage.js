@@ -6,6 +6,7 @@ import { disableUser, enableUser, loadComplaintsForUser } from '../../Services/C
 import UserCard from './UserCard/UserCard'
 import { Link } from 'react-router-dom'
 import Loading from '../../Components/Loading/Loading'
+import { Button } from 'react-bootstrap'
 
 class ComplaintUserPage extends Component {
 
@@ -38,24 +39,24 @@ class ComplaintUserPage extends Component {
       <div>
         <FullNavBar auth={this.props.auth} history={this.props.history}/>
         <div className={styles.body}>
+          {!this.state.ready &&
+          <Loading message="Cargando usuario" size="150"/> }
           <div className={styles.title}>
-            <Link to='/usersList'>
-              <h2 className={styles.back}>
-                ⟵Volver
-              </h2>
-            </Link>
-            {!this.state.ready &&
-            <Loading message="Cargando usuario" size="150"/> }
+            {/*<Link to='/usersList'>*/}
+              {/*<h2 className={styles.back}>*/}
+                {/*⟵Volver*/}
+              {/*</h2>*/}
+            {/*</Link>*/}
             {this.state.ready && <UserCard user={this.state.actualUser}/> }
             <div className={styles.button}>
               {this.state.ready && this.state.actualUser.condition === 'Disabled' &&
-              <button onClick={this.handleEnableUser}>
+              <Button  bsStyle="success" bsSize="large" onClick={this.handleEnableUser}>
                 Habilitar Usuario
-              </button>}
+              </Button>}
               {this.state.ready && this.state.actualUser.condition === 'Active' &&
-              <button onClick={this.handleDisableUser}>
+              <Button  bsStyle="danger" bsSize="large" onClick={this.handleDisableUser}>
                 Deshabilitar Usuario
-              </button>}
+              </Button>}
             </div>
           </div>
           {this.state.ready && <ComplaintsListForUser reject={this.reject} complaints={this.state.complaints}/>}

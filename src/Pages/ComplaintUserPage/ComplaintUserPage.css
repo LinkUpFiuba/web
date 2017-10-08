@@ -10,5 +10,10 @@
 }
 
 .button {
-    float: right;
+ align-self: flex-end;
+}
+
+.title {
+    display: flex ;
+    align-items: center;
 }

@@ -23,6 +23,7 @@ class ComplaintCard extends Component {
         <h5>Usuario Denunciante: { complaint.userName }</h5>
         <h5>Edad Denunciante: { complaint.age }</h5>
         <h5>Genero Denunciante: { complaint.gender }</h5>
+        <h5>Fecha: { complaint.timeStamp }</h5>
         <div>Mensaje: { complaint.message }</div>
       </div>
     )
