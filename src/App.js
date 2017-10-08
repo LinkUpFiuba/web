@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React  from 'react';
 import LoginPage from './Pages/LoginPage/LoginPage';
 import {
   BrowserRouter as Router,

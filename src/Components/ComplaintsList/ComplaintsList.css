@@ -1,3 +1,7 @@
 .pending{
     color: red;
 }
+
+.column {
+    text-align: center;
+}

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import styles from './ComplaintCard.css'
 import { translateGender, translateState } from '../../../../Services/TranslateService'
-import { Button } from 'react-bootstrap'
 
 class ComplaintCard extends Component {
 
@@ -24,7 +23,8 @@ class ComplaintCard extends Component {
         <h5>Edad: { complaint.age }</h5>
         <h5>Género: { complaint.gender }</h5>
         <h5>Fecha: { complaint.timeStamp }</h5>
-        <div>Mensaje: { complaint.message }</div>
+        <h5>Mensaje:</h5>
+        <div> { complaint.message }</div>
       </div>
     )
   }
