@@ -6,7 +6,7 @@ import { Button } from 'react-bootstrap'
 class ComplaintCard extends Component {
 
   handleOnClickReject = () => {
-    this.props.reject(this.props.complaint.complaintId)
+    this.props.reject( this.props.complaint.complaintId )
   }
 
   translateComplaint ( complaint ) {
@@ -21,8 +21,8 @@ class ComplaintCard extends Component {
       <div className={styles.cardBody}>
         <h2>{complaint.state}</h2>
         <h5>Usuario Denunciante: { complaint.userName }</h5>
-        <h5>Edad Denunciante: { complaint.age }</h5>
-        <h5>Genero Denunciante: { complaint.gender }</h5>
+        <h5>Edad: { complaint.age }</h5>
+        <h5>Género: { complaint.gender }</h5>
         <h5>Fecha: { complaint.timeStamp }</h5>
         <div>Mensaje: { complaint.message }</div>
       </div>

@@ -3,17 +3,15 @@
     border-radius: 5px;
 }
 
-.back{
-   right: 5px;
-    float: left;
+.back {
     display: inline-block;
 }
 
 .button {
- align-self: flex-end;
+    margin-top: 10px;
 }
 
 .title {
-    display: flex ;
+    display: flex;
     align-items: center;
 }

@@ -20,13 +20,11 @@ const App = () => (
 );
 
 const Home = () => {
-  console.log('home');
   return <Redirect to={'/usersList'} />;
 };
 
 const auth = {
-  //CAMBIAR
-  isAuthenticated: true,
+  isAuthenticated: false,
   authenticate(cb) {
     this.isAuthenticated = true;
   },

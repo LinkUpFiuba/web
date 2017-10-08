@@ -42,19 +42,21 @@ class ComplaintUserPage extends Component {
           {!this.state.ready &&
           <Loading message="Cargando usuario" size="150"/> }
           <div className={styles.title}>
-            {/*<Link to='/usersList'>*/}
-              {/*<h2 className={styles.back}>*/}
-                {/*⟵Volver*/}
-              {/*</h2>*/}
-            {/*</Link>*/}
-            {this.state.ready && <UserCard user={this.state.actualUser}/> }
+            {this.state.ready &&
+            <Link to='/usersList'>
+              <h2 className={styles.back}>
+                Lista de Usuarios /
+              </h2>
+            </Link> }
+            {this.state.ready &&
+            <UserCard user={this.state.actualUser}/> }
             <div className={styles.button}>
               {this.state.ready && this.state.actualUser.condition === 'Disabled' &&
-              <Button  bsStyle="success" bsSize="large" onClick={this.handleEnableUser}>
+              <Button bsStyle="success" bsSize="medium" onClick={this.handleEnableUser}>
                 Habilitar Usuario
               </Button>}
               {this.state.ready && this.state.actualUser.condition === 'Active' &&
-              <Button  bsStyle="danger" bsSize="large" onClick={this.handleDisableUser}>
+              <Button bsStyle="danger" bsSize="medium" onClick={this.handleDisableUser}>
                 Deshabilitar Usuario
               </Button>}
             </div>

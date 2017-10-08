@@ -17,14 +17,14 @@ class ComplaintsList extends Component {
       accessor: 'sex',
       Cell: props => <div>{translateGender( props.value )}</div>
     }, {
-      Header: 'Denuncias Nuevas',
+      Header: 'Nuevas Denuncias',
       accessor: 'new',
       Cell: props => <div className={styles.pending}>{props.value}</div>
     }, {
       Header: 'Total de denuncias',
       accessor: 'total',
     }, {
-      Header: 'Condicion',
+      Header: 'Condición',
       accessor: 'condition',
       Cell: props => <div>{translateCondition( props.value )}</div>
     }, {

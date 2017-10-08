@@ -12,12 +12,12 @@ class UserCard extends Component {
     return (
       <h1 className={styles.container}>
         <Label className={styles.label} bsStyle="primary"> {userName} </Label>
-        <Label className={styles.label}  bsStyle="info"> {age} años</Label>
-        <Label className={styles.label}  bsStyle="info"> {gender} </Label>
+        <Label className={styles.label} bsStyle="info"> {age} años</Label>
+        <Label className={styles.label} bsStyle="info"> {gender} </Label>
         {condition === 'Deshabilitado' &&
-        <Label className={styles.label} > Usuario {condition} </Label>}
+        <Label className={styles.label}> Usuario {condition} </Label>}
         {condition === 'Activo' &&
-        <Label  bsStyle="info" className={styles.label} > Usuario {condition} </Label>}
+        <Label bsStyle="info" className={styles.label}> Usuario {condition} </Label>}
       </h1>
     )
   }

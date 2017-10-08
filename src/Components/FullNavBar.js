@@ -36,7 +36,7 @@ class FullNavBar extends Component {
           </Nav>
           <Nav pullRight onSelect={this.handleSignOut}>
             <NavItem eventKey={3}>
-              Cerrar Sesion
+              Cerrar Sesión
             </NavItem>
           </Nav>
         </Navbar.Collapse>

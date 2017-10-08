@@ -1,5 +1,6 @@
-const baseUrl = 'http://localhost:5000'
+// const baseUrl = 'http://localhost:5000'
 // const baseUrl = 'https://dev-link-up-g1.herokuapp.com'
+const baseUrl = 'https://link-up-g1.herokuapp.com'
 
 export const loadComplaints = () => {
   return fetch( `${baseUrl}/complaints` )
