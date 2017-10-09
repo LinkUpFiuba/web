@@ -3,3 +3,15 @@
     background-color: #e3e4e5;
     border-radius: 5px;
 }
+
+.title {
+	display: flex;
+	align-items: center;
+
+}
+
+.reloadComplaints {
+	height: 35px;
+	margin-left: 10px;
+	top: 5px;
+}
