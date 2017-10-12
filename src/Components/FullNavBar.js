@@ -6,6 +6,7 @@ import { Component } from 'react/lib/ReactBaseClasses'
 class FullNavBar extends Component {
 
   complaintsRoute = 'complaints'
+  adsRoute = 'router'
 
   handleSignOut = () => {
     this.props.auth.signout( () => this.props.history.push( '/' ) )
@@ -14,6 +15,9 @@ class FullNavBar extends Component {
   handleSelect = event => {
     if ( event === this.complaintsRoute ) {
       this.props.history.push('/usersList')
+    }
+    if ( event === this.adsRoute ) {
+      this.props.history.push('/ads')
     }
   }
 
@@ -30,8 +34,8 @@ class FullNavBar extends Component {
             <NavItem eventKey={this.complaintsRoute}>
               Denuncias
             </NavItem>
-            <NavItem eventKey={2}>
-              Link
+            <NavItem eventKey={this.adsRoute}>
+              Publicidades
             </NavItem>
           </Nav>
           <Nav pullRight onSelect={this.handleSignOut}>
