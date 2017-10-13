@@ -7,8 +7,8 @@ import {
 } from 'react-router-dom'
 import UsersListPage from './Pages/UsersListPage/UsersListPage'
 import ComplaintUserPage from './Pages/ComplaintUserPage/ComplaintUserPage'
+import AdsPage from './Pages/AdsPage/AdsPage'
 import Cookies from 'universal-cookie';
-
 
 class App extends Component {
 
@@ -21,6 +21,7 @@ class App extends Component {
           <Route path="/login" render={() => <LoginPage auth={auth}/>}/>
           <PrivateRoute path="/usersList/:userId" componentProps={{ auth: auth }} component={ComplaintUserPage}/>
           <PrivateRoute path="/usersList" componentProps={{ auth: auth }} component={UsersListPage}/>
+          <PrivateRoute path="/ads" componentProps={{auth:auth}} component={AdsPage} />
           <PrivateRoute path="//" component={Home}/>
         </div>
       </Router>

@@ -1,0 +1,8 @@
+.body {
+    margin-left: 5px;
+}
+
+.adsList {
+    display: flex;
+    flex-wrap: wrap;
+}

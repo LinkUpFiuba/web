@@ -1,0 +1,33 @@
+.cardBody {
+    background-color: beige;
+    margin: 20px;
+    max-width: 300px;
+    border-radius: 3px;
+    padding-bottom: 5px;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-shadow: 1px 1px 2px #CACBCC;
+}
+
+.image {
+
+}
+
+.secondaryButton {
+    margin-left: 5px;
+}
+
+.combo {
+    text-align: center;
+    display: flex;
+    align-items: baseline;
+}
+
+.delete {
+    margin-left: 5px;
+    margin-bottom: 10px;
+}

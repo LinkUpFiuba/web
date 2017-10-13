@@ -30,3 +30,14 @@ export const translateCondition= condition => {
       return condition
   }
 }
+
+export const translateAdState= state => {
+  switch (state) {
+    case 'Active':
+      return 'Activa'
+    case 'Disabled':
+      return 'Deshabilitada'
+    default:
+      return state
+  }
+}

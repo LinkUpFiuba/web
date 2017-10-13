@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { Button, ControlLabel, FormControl, FormGroup } from 'react-bootstrap'
 import styles from './LoginForm.css'
 import { Redirect } from 'react-router-dom'
-import ErrorText from '../ErrorText/ErrorText'
-import { adminPass, adminUser } from '../../Constants'
+import ErrorText from '../../../Components/ErrorText/ErrorText'
+import { adminPass, adminUser } from '../../../Constants'
 
 class LoginForm extends Component {
   constructor(props) {

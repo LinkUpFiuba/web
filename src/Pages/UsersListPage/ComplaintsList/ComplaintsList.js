@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactTable from 'react-table'
 import styles from './ComplaintsList.css'
-import { translateCondition, translateGender } from '../../Services/TranslateService'
+import { translateCondition, translateGender } from '../../../Services/TranslateService'
 import { Link } from 'react-router-dom'
 
 class ComplaintsList extends Component {

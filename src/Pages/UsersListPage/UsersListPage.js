@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import FullNavBar from '../../Components/FullNavBar'
 import styles from './usersListPage.css'
-import ComplaintsList from '../../Components/ComplaintsList/ComplaintsList'
+import ComplaintsList from './ComplaintsList/ComplaintsList'
 import { loadComplaints } from '../../Services/ComplaintsService'
 import Loading from '../../Components/Loading/Loading'
 import { Button } from 'react-bootstrap'
