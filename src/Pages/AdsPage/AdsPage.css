@@ -6,3 +6,13 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.title {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.createButton {
+    margin-left: 15px;
+}
