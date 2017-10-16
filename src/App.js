@@ -17,7 +17,6 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <button onClick={this.handleNameChange}> cookie</button>
           <Route path="/login" render={() => <LoginPage auth={auth}/>}/>
           <PrivateRoute path="/usersList/:userId" componentProps={{ auth: auth }} component={ComplaintUserPage}/>
           <PrivateRoute path="/usersList" componentProps={{ auth: auth }} component={UsersListPage}/>
