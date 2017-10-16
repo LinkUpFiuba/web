@@ -7,7 +7,6 @@ export const loadAds = () => {
 }
 
 export const createAd = ( ad ) => {
-  console.log( ad )
   return fetch( `${baseUrl}/ads`,
     {
       method: 'POST',

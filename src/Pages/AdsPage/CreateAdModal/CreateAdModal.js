@@ -46,7 +46,7 @@ class CreateAdModal extends Component {
         <div className={styles.form}>
           <form>
             <FormGroup>
-              <ControlLabel>Titulo</ControlLabel>
+              <ControlLabel>Título</ControlLabel>
               <FormControl
                 type="text"
                 value={this.state.title}
