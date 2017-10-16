@@ -6,8 +6,8 @@ import ErrorText from '../../../Components/ErrorText/ErrorText'
 import { adminPass, adminUser } from '../../../Constants'
 
 class LoginForm extends Component {
-  constructor(props) {
-    super(props)
+  constructor ( props ) {
+    super( props )
     this.state = {
       username: '',
       password: '',
@@ -17,28 +17,31 @@ class LoginForm extends Component {
   }
 
   handleUserChange = e => {
-    this.setState({ username: e.target.value, error: false })
+    this.setState( { username: e.target.value, error: false } )
   }
 
   handleOnClick = () => {
-    if (
-      this.state.username === adminUser &&
-      this.state.password === adminPass
-    ) {
-      this.setState({ redirectToReferrer: true })
+    if ( this.state.username === adminUser && this.state.password === adminPass ) {
+      this.setState( { redirectToReferrer: true } )
     }
-    this.setState({ error: true })
+    this.setState( { error: true } )
   }
 
   handlePasswordChange = e => {
-    this.setState({ password: e.target.value, error: false })
+    this.setState( { password: e.target.value, error: false } )
   }
 
-  render() {
+  handleOnKeyPressInPassword = e => {
+    if ( e.key === 'Enter' ) {
+      this.handleOnClick()
+    }
+  }
+
+  render () {
     const redirectToReferrer = this.state.redirectToReferrer
-    if (redirectToReferrer) {
+    if ( redirectToReferrer ) {
       this.props.auth.authenticate()
-      return <Redirect to={'/usersList'} />
+      return <Redirect to={'/usersList'}/>
     }
 
     return (
@@ -60,6 +63,7 @@ class LoginForm extends Component {
             value={this.state.password}
             placeholder="Ingresar contraseña"
             onChange={this.handlePasswordChange}
+            onKeyPress={this.handleOnKeyPressInPassword}
           />
           <FormControl.Feedback />
         </FormGroup>
@@ -68,7 +72,7 @@ class LoginForm extends Component {
             Ingresar
           </Button>
           {this.state.error && (
-            <ErrorText text="La combinacion de usuarios/contraseña es incorrecta" />
+            <ErrorText text="La combinacion de usuarios/contraseña es incorrecta"/>
           )}
         </div>
       </div>
