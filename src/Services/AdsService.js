@@ -13,6 +13,20 @@ export const deleteAd = ( adUid ) => {
     .then( handleErrors )
 }
 
+export const enableAd = ( adUid ) => {
+  return fetch( `${baseUrl}/ads/${adUid}/enable`, {
+    method: 'POST'
+  } )
+    .then( handleErrors )
+}
+
+export const disableAd = ( adUid ) => {
+  return fetch( `${baseUrl}/ads/${adUid}/disable`, {
+    method: 'POST'
+  } )
+    .then( handleErrors )
+}
+
 export const createAd = ( ad ) => {
   return fetch( `${baseUrl}/ads`,
     {
