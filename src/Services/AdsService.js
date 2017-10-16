@@ -6,6 +6,13 @@ export const loadAds = () => {
     .then( res => res.json() )
 }
 
+export const deleteAd = ( adUid ) => {
+  return fetch( `${baseUrl}/ads/${adUid}`, {
+    method: 'DELETE'
+  } )
+    .then( handleErrors )
+}
+
 export const createAd = ( ad ) => {
   return fetch( `${baseUrl}/ads`,
     {

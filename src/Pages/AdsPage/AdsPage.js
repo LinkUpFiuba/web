@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import FullNavBar from '../../Components/FullNavBar'
 import styles from './AdsPage.css'
 import AdCard from './AdCard/AdCard'
-import { loadAds, createAd } from '../../Services/AdsService'
+import { deleteAd, loadAds, createAd } from '../../Services/AdsService'
 import Loading from '../../Components/Loading/Loading'
 import Button from 'react-bootstrap/es/Button'
 import CreateAdModal from './CreateAdModal/CreateAdModal'
@@ -19,6 +19,12 @@ class AdsPage extends Component {
     loadAds()
       .then( ads => this.setState( { ads } ) )
       .then( () => this.setState( { ready: true } ) )
+  }
+
+  handleDeleteAd = ( adUid ) => {
+    this.setState( { ready: false } )
+    deleteAd( adUid )
+      .then(() => this.componentDidMount())
   }
 
   onClickCreateAd = ( title, image, state ) => {
@@ -40,7 +46,7 @@ class AdsPage extends Component {
   render () {
     const allCards = this.state.ready && this.state.ads.map( ad =>
         <div className={styles.grow}>
-          <AdCard ad={ad}/>
+          <AdCard deleteAd={this.handleDeleteAd} ad={ad}/>
         </div>
       )
 

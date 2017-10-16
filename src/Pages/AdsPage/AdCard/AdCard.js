@@ -4,6 +4,11 @@ import { Button, Glyphicon } from 'react-bootstrap'
 import { translateAdState } from '../../../Services/TranslateService'
 
 class AdCard extends Component {
+
+  handleDeleteAd = () => {
+    this.props.deleteAd(this.props.ad.uid)
+  }
+
   render () {
     return (
       <div className={styles.cardBody}>
@@ -11,12 +16,13 @@ class AdCard extends Component {
         <div className={styles.combo}>
           <h2>{this.props.ad.title}</h2>
           <div className={styles.delete}>
-            <Button className={styles.delete} bsSize="small" bsStyle="danger"><Glyphicon
-              glyph="glyphicon glyphicon-remove"/></Button>
+            <Button onClick={this.handleDeleteAd} className={styles.delete} bsSize="small" bsStyle="danger">
+              <Glyphicon glyph="glyphicon glyphicon-remove"/>
+            </Button>
           </div>
         </div>
         <div className={styles.combo}>
-          <h5>Estado: {translateAdState(this.props.ad.state)}</h5>
+          <h5>Estado: {translateAdState( this.props.ad.state )}</h5>
           {this.props.ad.state === 'Active' &&
           <Button className={styles.secondaryButton} bsSize="small" bsStyle="warning">Desactivar</Button>}
           {this.props.ad.state === 'Disabled' &&
