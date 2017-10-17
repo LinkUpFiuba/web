@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import FullNavBar from '../../Components/FullNavBar'
 import styles from './AdsPage.css'
 import AdCard from './AdCard/AdCard'
-import { deleteAd, loadAds, createAd } from '../../Services/AdsService'
+import { deleteAd, loadAds, createAd, enableAd, disableAd } from '../../Services/AdsService'
 import Loading from '../../Components/Loading/Loading'
 import Button from 'react-bootstrap/es/Button'
 import CreateAdModal from './CreateAdModal/CreateAdModal'
@@ -27,6 +27,18 @@ class AdsPage extends Component {
       .then(() => this.componentDidMount())
   }
 
+  handleEnableAdClick = ( adUid ) => {
+    this.setState( { ready: false } )
+    enableAd( adUid )
+      .then(() => this.componentDidMount())
+  }
+
+  handleDisableAdClick = ( adUid ) => {
+    this.setState( { ready: false } )
+    disableAd( adUid )
+      .then(() => this.componentDidMount())
+  }
+
   onClickCreateAd = ( title, image, state ) => {
     this.setState( { showModal: false, ready: false } )
     createAd( { title: title, image: image, state: state } )
@@ -46,7 +58,7 @@ class AdsPage extends Component {
   render () {
     const allCards = this.state.ready && this.state.ads.map( ad =>
         <div className={styles.grow}>
-          <AdCard deleteAd={this.handleDeleteAd} ad={ad}/>
+          <AdCard enable={this.handleEnableAdClick} disable={this.handleDisableAdClick} delete={this.handleDeleteAd} ad={ad}/>
         </div>
       )
 

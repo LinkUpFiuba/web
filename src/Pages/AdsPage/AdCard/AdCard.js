@@ -6,7 +6,15 @@ import { translateAdState } from '../../../Services/TranslateService'
 class AdCard extends Component {
 
   handleDeleteAd = () => {
-    this.props.deleteAd(this.props.ad.uid)
+    this.props.delete(this.props.ad.uid)
+  }
+
+  handleEnableAd = () => {
+    this.props.enable(this.props.ad.uid)
+  }
+
+  handleDisableAd = () => {
+    this.props.disable(this.props.ad.uid)
   }
 
   render () {
@@ -24,9 +32,9 @@ class AdCard extends Component {
         <div className={styles.combo}>
           <h5>Estado: {translateAdState( this.props.ad.state )}</h5>
           {this.props.ad.state === 'Active' &&
-          <Button className={styles.secondaryButton} bsSize="small" bsStyle="warning">Desactivar</Button>}
+          <Button className={styles.secondaryButton} onClick={this.handleDisableAd} bsSize="small" bsStyle="warning">Desactivar</Button>}
           {this.props.ad.state === 'Disabled' &&
-          <Button className={styles.secondaryButton} bsSize="small" bsStyle="success">Activar</Button>}
+          <Button className={styles.secondaryButton} onClick={this.handleEnableAd} bsSize="small" bsStyle="success">Activar</Button>}
         </div>
       </div>
     )
