@@ -6,7 +6,7 @@ import { translateAdState } from '../../../Services/TranslateService'
 class AdCard extends Component {
 
   handleDeleteAd = () => {
-    this.props.deleteAd(this.props.ad.uid)
+    this.props.delete(this.props.ad.uid)
   }
 
   handleEnableAd = () => {
