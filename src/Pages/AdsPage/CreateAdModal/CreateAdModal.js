@@ -30,7 +30,15 @@ class CreateAdModal extends Component {
   }
 
   handleCreateButtonOnClick = () => {
-    this.props.create( this.state.title, this.state.image, this.state.state )
+    const title = this.state.title
+    const image = this.state.image
+    const state = this.state.state
+    this.setState({
+      title :'',
+      image : '',
+      state: 'Active'
+    })
+    this.props.create( title, image, state)
   }
 
   areFieldsReady = () => {
