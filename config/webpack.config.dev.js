@@ -153,14 +153,57 @@ module.exports = {
                             cacheDirectory: true,
                         },
                     },
-                    // "postcss" loader applies autoprefixer to our CSS.
+
+                  {
+                    test: /\.css$/,
+                    include: [
+                      path.resolve(paths.appNodeModules, 'react-input-range'),
+                    ],
+                    use: [
+                      'style-loader',
+                      {
+                        loader: 'css-loader',
+                        options: {
+                          importLoaders: 1,
+                          camelCase: true,
+                          localIdentName: '[local]--[hash:base64:5]',
+                          modules: false, // should be false for @mulesoft/anypoint-components
+                        },
+                      },
+                      {
+                        loader: 'postcss-loader',
+                        options: {
+                          ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
+                          plugins: () => [
+                            autoprefixer({
+                              browsers: [
+                                '>1%',
+                                'last 4 versions',
+                                'Firefox ESR',
+                                'not ie < 9', // React doesn't support IE8 anyway
+                              ],
+                            }),
+                            postCssSimpleVars({
+                              variables: () => anypointStylesVariabes,
+                            }),
+                            postCssNested,
+                          ],
+                        },
+                      },
+                    ],
+                  },
+
+                  // "postcss" loader applies autoprefixer to our CSS.
                     // "css" loader resolves paths in CSS and adds assets as dependencies.
                     // "style" loader turns CSS into JS modules that inject <style> tags.
                     // In production, we use a plugin to extract that CSS to a file, but
                     // in development "style" loader enables hot editing of CSS.
                     {
-                        test: /\.css$/,
-                        use: [
+                      test: /\.css$/,
+                      exclude: [
+                        /node_modules\/react-input-range/
+                      ],
+                      use: [
                             require.resolve('style-loader'),
                             {
                                 loader: require.resolve('css-loader'),

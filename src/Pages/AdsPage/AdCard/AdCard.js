@@ -1,20 +1,20 @@
 import React, { Component } from 'react'
 import styles from './AdCard.css'
 import { Button, Glyphicon } from 'react-bootstrap'
-import { translateAdState } from '../../../Services/TranslateService'
+import { translateAdState, translateGender } from '../../../Services/TranslateService'
 
 class AdCard extends Component {
 
   handleDeleteAd = () => {
-    this.props.delete(this.props.ad.uid)
+    this.props.delete( this.props.ad.uid )
   }
 
   handleEnableAd = () => {
-    this.props.enable(this.props.ad.uid)
+    this.props.enable( this.props.ad.uid )
   }
 
   handleDisableAd = () => {
-    this.props.disable(this.props.ad.uid)
+    this.props.disable( this.props.ad.uid )
   }
 
   render () {
@@ -29,6 +29,8 @@ class AdCard extends Component {
             </Button>
           </div>
         </div>
+        <h5>Target: {translateGender( this.props.ad.target )}</h5>
+        <h5>Rango de Edad: {this.props.ad.ageRange.min} - {this.props.ad.ageRange.max} años</h5>
         <div className={styles.combo}>
           <h5>Estado: {translateAdState( this.props.ad.state )}</h5>
           {this.props.ad.state === 'Active' &&

@@ -39,9 +39,9 @@ class AdsPage extends Component {
       .then(() => this.componentDidMount())
   }
 
-  onClickCreateAd = ( title, image, state ) => {
+  onClickCreateAd = ( title, image, state, target, ageRange ) => {
     this.setState( { showModal: false, ready: false } )
-    createAd( { title: title, image: image, state: state } )
+    createAd( { title: title, image: image, state: state, target: target, ageRange: ageRange } )
       .then( () => {
         this.componentDidMount()
       } )
