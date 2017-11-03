@@ -46,7 +46,7 @@ class CreateAdModal extends Component {
     const image = this.state.image
     const state = this.state.state
     const target = this.state.target
-    const agerRange = this.state.ageRange
+    const ageRange = this.state.ageRange
     this.setState({
       title :'',
       image : '',
@@ -57,7 +57,7 @@ class CreateAdModal extends Component {
         max: 100
       }
     })
-    this.props.create( title, image, state, target, agerRange)
+    this.props.create( title, image, state, target, ageRange)
   }
 
   areFieldsReady = () => {
