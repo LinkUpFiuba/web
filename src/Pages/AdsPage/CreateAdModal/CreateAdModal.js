@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { Button, ControlLabel, FormControl, FormGroup, Modal } from 'react-bootstrap'
 import styles from './CreateAdModal.css'
-
+import Slider from 'rc-slider';
+import createSliderWithTooltip from 'rc-slider/es/createSliderWithTooltip'
+import InputRange from 'react-input-range';
 class CreateAdModal extends Component {
 
   constructor ( props ) {
@@ -10,11 +12,17 @@ class CreateAdModal extends Component {
     this.state = {
       title: '',
       image: '',
-      state: 'Active'
+      state: 'Active',
+      target: 'All',
+      ageRange: {
+        min: 18,
+        max: 100
+      },
     }
     this.handleTitleChange = this.handleTitleChange.bind( this )
     this.handleImageChange = this.handleImageChange.bind( this )
     this.handleStateChange = this.handleStateChange.bind( this )
+    this.handleTargetChange = this.handleTargetChange.bind( this )
   }
 
   handleTitleChange ( e ) {
@@ -29,16 +37,27 @@ class CreateAdModal extends Component {
     this.setState( { image: e.target.value } )
   }
 
+  handleTargetChange ( e ) {
+    this.setState( { target: e.target.value } )
+  }
+
   handleCreateButtonOnClick = () => {
     const title = this.state.title
     const image = this.state.image
     const state = this.state.state
+    const target = this.state.target
+    const ageRange = this.state.ageRange
     this.setState({
       title :'',
       image : '',
-      state: 'Active'
+      state: 'Active',
+      target:'all',
+      ageRange: {
+        min: 18,
+        max: 100
+      }
     })
-    this.props.create( title, image, state)
+    this.props.create( title, image, state, target, ageRange)
   }
 
   areFieldsReady = () => {
@@ -46,6 +65,7 @@ class CreateAdModal extends Component {
   }
 
   render () {
+    const Range = createSliderWithTooltip(Slider.Range);
     return (
       <Modal show={this.props.show} onHide={this.props.onClose}>
         <Modal.Header closeButton>
@@ -69,6 +89,27 @@ class CreateAdModal extends Component {
                 onChange={this.handleImageChange}
                 value={this.state.image}
                 placeholder="http://link.to.image.com/image.jpg"/>
+            </FormGroup>
+            <FormGroup controlId="formTarget">
+              <ControlLabel>Target</ControlLabel>
+              <FormControl
+                componentClass="select"
+                placeholder="Seleccionar target de la publicidad"
+                onChange={this.handleTargetChange}>
+                <option value="all">Todos</option>
+                <option value="male">Hombres</option>
+                <option value="female">Mujeres</option>
+              </FormControl>
+            </FormGroup>
+            <FormGroup controlId="formTarget">
+              <ControlLabel>Rango edad</ControlLabel>
+              <div className={styles.inputRange}>
+                <InputRange
+                  maxValue={100}
+                  minValue={18}
+                  value={this.state.ageRange}
+                  onChange={ageRange => this.setState({ageRange})} />
+              </div>
             </FormGroup>
             <FormGroup controlId="formControlsSelect">
               <ControlLabel>Estado inicial</ControlLabel>

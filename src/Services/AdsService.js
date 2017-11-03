@@ -35,11 +35,7 @@ export const createAd = ( ad ) => {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
-      body: JSON.stringify({
-        title: ad.title,
-        image: ad.image,
-        state: ad.state
-      })
+      body: JSON.stringify(ad)
     },
   ).then( handleErrors )
     .catch( err => {

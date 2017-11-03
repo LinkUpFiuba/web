@@ -15,6 +15,8 @@ export const translateGender= gender => {
       return 'Hombre'
     case 'female':
       return 'Mujer'
+    case 'all':
+      return 'Todos'
     default:
       return gender
   }
