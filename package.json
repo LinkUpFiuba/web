@@ -51,6 +51,7 @@
     "sw-precache-webpack-plugin": "0.11.4",
     "universal-cookie": "latest",
     "url-loader": "0.5.9",
+    "victory-pie": "^13.0.1",
     "webpack": "3.5.1",
     "webpack-dev-server": "2.7.1",
     "webpack-manifest-plugin": "1.2.1"

@@ -6,7 +6,7 @@ import { loadComplaintsByType } from '../../Services/ReportsService'
 import Loading from '../../Components/Loading/Loading'
 import { Button } from 'react-bootstrap'
 
-class UsersListPage extends Component {
+class ReportsPage extends Component {
 
   state = {
     complaintsReport: false,
@@ -28,9 +28,9 @@ class UsersListPage extends Component {
         <div className={styles.body}>
           <div className={styles.title}>
             <h1>Reportes</h1>
-            <Button className={styles.reloadComplaints} onClick={this.onComplaintsReportClick}>Denuncias</Button>
+            <Button className={styles.reportButtons} onClick={this.onComplaintsReportClick}>Denuncias</Button>
             {/* TODO: Cambiar cuando se haga el reporte de usuarios */}
-            <Button className={styles.reloadComplaints} onClick={this.onComplaintsReportClick}>Usuarios</Button>
+            <Button className={styles.reportButtons} onClick={this.onComplaintsReportClick}>Usuarios</Button>
           </div>
           {!this.state.ready &&
           <Loading message="Cargando datos" size={150}/> }
@@ -42,4 +42,4 @@ class UsersListPage extends Component {
   }
 }
 
-export default UsersListPage
+export default ReportsPage

@@ -1,4 +1,4 @@
-.body{
+.body {
     margin: 10px;
     background-color: #e3e4e5;
     border-radius: 5px;
@@ -9,7 +9,7 @@
     align-items: center;
 }
 
-.reloadComplaints {
+.reportButtons {
     margin-left: 10px;
 }
 

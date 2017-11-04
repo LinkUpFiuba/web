@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { VictoryPie } from 'victory-pie'
+import { translateComplaintType } from "../../../Services/TranslateService"
+import styles from './ComplaintsReport.css'
 
 class ComplaintsReport extends Component {
   constructor ( props ) {
@@ -6,16 +9,21 @@ class ComplaintsReport extends Component {
     this.state = {}
   }
 
+  transformData = complaintsByType => {
+    return Object.keys(complaintsByType).map(key => {
+      return { x: key, y: complaintsByType[key], label: translateComplaintType(key).split(' ').join('\n') }
+    })
+  }
+
   render () {
-    const complaintsByType = this.props.complaintsByType
+    const complaintsByType = this.transformData(this.props.complaintsByType)
     return (
-      <ul>
-        {Object.keys(complaintsByType).map(key =>
-          <li key={key}>
-            {`${key}: ${complaintsByType[key]}`}
-          </li>
-        )}
-      </ul>
+      <div className={styles.chart}>
+        <VictoryPie
+          data={complaintsByType}
+          colorScale="qualitative"
+          style={{ labels: { fontSize: 10 } }} />
+      </div>
     )
   }
 }

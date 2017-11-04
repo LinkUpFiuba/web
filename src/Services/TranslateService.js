@@ -43,3 +43,18 @@ export const translateAdState= state => {
       return state
   }
 }
+
+export const translateComplaintType = type => {
+  switch (type) {
+    case 'spam':
+      return 'Spam'
+    case 'inappropiate-message':
+      return 'Mensaje inapropiado'
+    case 'suspicious':
+      return 'Comportamiento sospechoso'
+    case 'other':
+      return 'Otros'
+    default:
+      return type
+  }
+}
