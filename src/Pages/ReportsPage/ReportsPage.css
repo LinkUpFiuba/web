@@ -1,0 +1,18 @@
+.body{
+    margin: 10px;
+    background-color: #e3e4e5;
+    border-radius: 5px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+}
+
+.reloadComplaints {
+    margin-left: 10px;
+}
+
+h1 {
+    margin-bottom: 24px
+}
