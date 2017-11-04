@@ -17,6 +17,10 @@ class AdCard extends Component {
     this.props.disable( this.props.ad.uid )
   }
 
+  handleUpdateAd = () => {
+    this.props.update( this.props.ad )
+  }
+
   render () {
     return (
       <div className={styles.cardBody}>
@@ -24,6 +28,9 @@ class AdCard extends Component {
         <div className={styles.combo}>
           <h2>{this.props.ad.title}</h2>
           <div className={styles.delete}>
+            <Button onClick={this.handleUpdateAd} className={styles.delete} bsSize="small" bsStyle="warning">
+              <Glyphicon glyph="glyphicon glyphicon-pencil"/>
+            </Button>
             <Button onClick={this.handleDeleteAd} className={styles.delete} bsSize="small" bsStyle="danger">
               <Glyphicon glyph="glyphicon glyphicon-remove"/>
             </Button>
