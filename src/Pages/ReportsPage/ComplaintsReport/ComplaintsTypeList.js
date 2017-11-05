@@ -20,6 +20,7 @@ class ComplaintsTypeList extends Component {
         columns={columns}
         showPagination={false}
         pageSize={4}
+        noDataText='No hay denuncias'
       />
     )
   }

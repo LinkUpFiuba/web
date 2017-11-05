@@ -39,6 +39,14 @@ class ComplaintsList extends Component {
       <ReactTable
         data={this.props.complaints}
         columns={columns}
+        defaultPageSize={5}
+        previousText='Anterior'
+        nextText='Siguiente'
+        loadingText='Cargando...'
+        noDataText='No se encontraron denuncias'
+        pageText='Página'
+        ofText='de'
+        rowsText='filas'
       />
     )
   }
