@@ -7,12 +7,7 @@ class ComplaintsReport extends Component {
   constructor ( props ) {
     super( props )
     this.state = {
-      selected: {
-        'other': false,
-        'inappropiate-message': false,
-        'suspicious': false,
-        'spam': false
-      }
+      selected: ''
     }
   }
 
@@ -23,20 +18,15 @@ class ComplaintsReport extends Component {
   }
 
   handleClick = click => {
-    console.log(click)
-    this.setState({
-      selected: { ...this.state.selected, [click]: !this.state.selected[click] }
-    })
-    console.log(this.state.selected)
+    this.setState({ selected: click }, () => { console.log(this.state.selected) })
   }
 
   handleSliceClick = () => {
     return [
       {
         target: "data",
-        mutation: (props) => {
+        mutation: props => {
           this.handleClick(props.datum.x)
-          console.log(props)
           const fill = props.style && props.style.fill
           return fill === "#c43a31" ? null : { style: { fill: "#c43a31" } }
         }
