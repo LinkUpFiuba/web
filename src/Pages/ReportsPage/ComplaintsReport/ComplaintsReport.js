@@ -51,6 +51,7 @@ class ComplaintsReport extends Component {
     return (
       <div className={styles.container}>
         <div className={styles.half}>
+          <h4>Cantidad de denuncias según el tipo</h4>
           <div className={styles.chart}>
             <VictoryPie
               data={complaintsByType}
@@ -64,19 +65,21 @@ class ComplaintsReport extends Component {
                 }
               }]} />
           </div>
-          <div>
+          <div className={styles.chart}>
             <ComplaintsTypeList data={complaintsByType} type='denuncias'/>
           </div>
         </div>
-        {this.state.disabledUsersForType.length > 0 && <div className={styles.half}>
+        {this.state.disabledUsersForType.length > 0 &&
+        <div className={styles.half}>
+          <h4>{`Usuarios con denuncias de tipo "${translateComplaintType(this.state.selected)}"`}</h4>
           <div className={styles.chart}>
             <VictoryPie
-              data={this.state.disabledUsersForType}
+              data={this.state.disabledUsersForType.filter(category => category.y !== 0)}
               colorScale="qualitative"
               labelRadius={70}
               style={{ labels: { fill: "white", fontSize: 10 } }} />
           </div>
-          <div>
+          <div className={styles.chart}>
             <ComplaintsTypeList data={this.state.disabledUsersForType} type='usuarios'/>
           </div>
         </div>}
