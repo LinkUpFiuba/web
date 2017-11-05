@@ -43,6 +43,23 @@ export const createAd = ( ad ) => {
     } )
 }
 
+export const updateAd = ( adUid, ad ) => {
+  return fetch( `${baseUrl}/ads/${adUid}`,
+    {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify(ad)
+    },
+  ).then( handleErrors )
+    .catch( err => {
+      console.log( err )
+    } )
+}
+
+
 function handleErrors ( response ) {
   if ( !response.ok ) {
     console.log( response )
