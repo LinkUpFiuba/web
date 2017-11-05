@@ -1,25 +1,36 @@
 import React, { Component } from 'react'
 import { VictoryPie } from 'victory-pie'
-import { translateComplaintType } from "../../../Services/TranslateService"
+import { translateComplaintType, translateCondition } from "../../../Services/TranslateService"
 import styles from './ComplaintsReport.css'
-import ComplaintsTypeList from "./ComplaintsTypeList"
+import ComplaintsTypeList from "./ComplaintsReportList"
+import { loadDisabledUsersForType } from '../../../Services/ReportsService'
 
 class ComplaintsReport extends Component {
   constructor ( props ) {
     super( props )
     this.state = {
-      selected: ''
+      selected: '',
+      disabledUsersForType: []
     }
   }
 
-  transformData = complaintsByType => {
+  transformComplaintsTypeData = complaintsByType => {
     return Object.keys(complaintsByType).map(key => {
       return { x: key, y: complaintsByType[key], label: translateComplaintType(key).split(' ').join('\n') }
     })
   }
 
+  transformDisabledUsersData = data => {
+    return Object.keys(data).map(key => {
+      return { x: key, y: data[key], label: translateCondition(key).split(' ').join('\n') }
+    })
+  }
+
   handleClick = click => {
-    this.setState({ selected: click })
+    this.setState({ ready: false, selected: click })
+    loadDisabledUsersForType(click)
+      .then(data => this.setState({ disabledUsersForType: this.transformDisabledUsersData(data) }))
+      .then(() => this.setState({ ready: true }))
   }
 
   handleSliceClick = () => {
@@ -36,25 +47,39 @@ class ComplaintsReport extends Component {
   }
 
   render () {
-    const complaintsByType = this.transformData(this.props.complaintsByType)
+    const complaintsByType = this.transformComplaintsTypeData(this.props.complaintsByType)
     return (
-      <div className={styles.half}>
-        <div className={styles.chart}>
-          <VictoryPie
-            data={complaintsByType}
-            colorScale="qualitative"
-            labelRadius={70}
-            style={{ labels: { fill: "white", fontSize: 10 } }}
-            events={[{
-              target: "data",
-              eventHandlers: {
-                onClick: this.handleSliceClick
-              }
-            }]} />
+      <div className={styles.container}>
+        <div className={styles.half}>
+          <div className={styles.chart}>
+            <VictoryPie
+              data={complaintsByType}
+              colorScale="qualitative"
+              labelRadius={70}
+              style={{ labels: { fill: "white", fontSize: 10 } }}
+              events={[{
+                target: "data",
+                eventHandlers: {
+                  onClick: this.handleSliceClick
+                }
+              }]} />
+          </div>
+          <div>
+            <ComplaintsTypeList data={complaintsByType} type='denuncias'/>
+          </div>
         </div>
-        <div>
-          <ComplaintsTypeList data={complaintsByType} />
-        </div>
+        {this.state.disabledUsersForType.length > 0 && <div className={styles.half}>
+          <div className={styles.chart}>
+            <VictoryPie
+              data={this.state.disabledUsersForType}
+              colorScale="qualitative"
+              labelRadius={70}
+              style={{ labels: { fill: "white", fontSize: 10 } }} />
+          </div>
+          <div>
+            <ComplaintsTypeList data={this.state.disabledUsersForType} type='usuarios'/>
+          </div>
+        </div>}
       </div>
     )
   }

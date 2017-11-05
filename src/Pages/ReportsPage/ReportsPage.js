@@ -12,7 +12,8 @@ class ReportsPage extends Component {
   state = {
     reportSelected: '',
     complaintsByType: {},
-    ready: true
+    ready: true,
+    datesSelected: false,
   }
 
   onDatesSelected = (startDate, endDate) => {
@@ -20,10 +21,10 @@ class ReportsPage extends Component {
     if (this.state.reportSelected === 'complaints') {
       loadComplaintsByType(startDate, endDate)
         .then(complaintsByType => this.setState({ complaintsByType }))
-        .then(() => this.setState({ ready: true }))
+        .then(() => this.setState({ ready: true, datesSelected: true }))
     } else {
       // Load the other report data
-      this.setState({ ready: true })
+      this.setState({ ready: true, datesSelected: true })
     }
   }
 
@@ -45,7 +46,7 @@ class ReportsPage extends Component {
           {this.state.reportSelected && <DatePickers onNewDate={this.onDatesSelected}/>}
           {!this.state.ready &&
           <Loading message="Cargando datos" size={150}/> }
-          {this.state.ready && this.state.reportSelected === 'complaints' &&
+          {this.state.ready && this.state.datesSelected && this.state.reportSelected === 'complaints' &&
           <ComplaintsReport complaintsByType={this.state.complaintsByType} />}
         </div>
       </div>

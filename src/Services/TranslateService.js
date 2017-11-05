@@ -28,6 +28,10 @@ export const translateCondition= condition => {
       return 'Activo'
     case 'Disabled':
       return 'Deshabilitado'
+    case 'enabled':
+      return 'Activo'
+    case 'disabled':
+      return 'Deshabilitado'
     default:
       return condition
   }

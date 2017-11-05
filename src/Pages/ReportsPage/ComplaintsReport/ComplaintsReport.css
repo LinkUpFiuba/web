@@ -6,3 +6,8 @@
     width: 80%;
     margin: 0 auto;
 }
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}

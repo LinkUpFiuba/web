@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import ReactTable from 'react-table'
-import styles from './ComplaintsTypeList.css'
+import styles from './ComplaintsReportList.css'
 
-class ComplaintsTypeList extends Component {
+class ComplaintsReportList extends Component {
   render () {
     const columns = [ {
       Header: 'Tipo',
       accessor: 'label',
       Cell: props => <div>{props.value}</div>
     }, {
-      Header: 'Cantidad de usuarios',
+      Header: `Cantidad de ${this.props.type}`,
       accessor: 'y',
       Cell: props => <div className={styles.center}>{props.value}</div>
     }]
@@ -19,11 +19,11 @@ class ComplaintsTypeList extends Component {
         data={this.props.data}
         columns={columns}
         showPagination={false}
-        pageSize={4}
-        noDataText='No hay denuncias'
+        pageSize={this.props.data.length}
+        noDataText={`No hay ${this.props.type}`}
       />
     )
   }
 }
 
-export default ComplaintsTypeList
+export default ComplaintsReportList
