@@ -1,4 +1,8 @@
-.chart {
+.half {
     width: 50%;
-    height: 50%;
+}
+
+.chart {
+    width: 80%;
+    margin: 0 auto;
 }

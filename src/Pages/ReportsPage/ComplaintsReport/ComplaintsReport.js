@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { VictoryPie } from 'victory-pie'
 import { translateComplaintType } from "../../../Services/TranslateService"
 import styles from './ComplaintsReport.css'
+import ComplaintsTypeList from "./ComplaintsTypeList"
 
 class ComplaintsReport extends Component {
   constructor ( props ) {
@@ -18,7 +19,7 @@ class ComplaintsReport extends Component {
   }
 
   handleClick = click => {
-    this.setState({ selected: click }, () => { console.log(this.state.selected) })
+    this.setState({ selected: click })
   }
 
   handleSliceClick = () => {
@@ -37,17 +38,23 @@ class ComplaintsReport extends Component {
   render () {
     const complaintsByType = this.transformData(this.props.complaintsByType)
     return (
-      <div className={styles.chart}>
-        <VictoryPie
-          data={complaintsByType}
-          colorScale="qualitative"
-          style={{ labels: { fontSize: 10 } }}
-          events={[{
-            target: "data",
-            eventHandlers: {
-              onClick: this.handleSliceClick
-            }
-          }]} />
+      <div className={styles.half}>
+        <div className={styles.chart}>
+          <VictoryPie
+            data={complaintsByType}
+            colorScale="qualitative"
+            labelRadius={70}
+            style={{ labels: { fill: "white", fontSize: 10 } }}
+            events={[{
+              target: "data",
+              eventHandlers: {
+                onClick: this.handleSliceClick
+              }
+            }]} />
+        </div>
+        <div>
+          <ComplaintsTypeList data={complaintsByType} />
+        </div>
       </div>
     )
   }

@@ -31,7 +31,7 @@ class DatePickers extends Component {
     this.setState({ endYear: year })
   }
 
-  handleOnClick = e => {
+  handleOnClick = () => {
     const startDate = `${this.state.startYear}-${this.state.startMonth}`
     const endDate = `${this.state.endYear}-${this.state.endMonth}`
     if (this.props.onNewDate) this.props.onNewDate(startDate, endDate)
@@ -50,7 +50,7 @@ class DatePickers extends Component {
             onMonthChange={this.handleEndMonthChange}
             onYearChange={this.handleEndYearChange} />
         </div>
-        <Button className={styles.button} onClick={this.handleOnClick}>Enviar</Button>
+        <Button className={styles.button} onClick={this.handleOnClick}>Actualizar</Button>
       </div>
     )
   }
