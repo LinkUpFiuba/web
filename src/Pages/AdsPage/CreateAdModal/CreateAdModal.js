@@ -1,18 +1,16 @@
 import React, { Component } from 'react'
 import { Button, ControlLabel, FormControl, FormGroup, Modal } from 'react-bootstrap'
 import styles from './CreateAdModal.css'
-import Slider from 'rc-slider';
 import InputRange from 'react-input-range';
 class CreateAdModal extends Component {
 
   constructor ( props ) {
     super( props )
-
     this.state =  props.ad || {
       title: '',
       image: '',
       state: 'Active',
-      target: 'All',
+      target: 'all',
       ageRange: {
         min: 18,
         max: 100
@@ -69,7 +67,7 @@ class CreateAdModal extends Component {
       title :'',
       image : '',
       state: 'Active',
-      target:'all',
+      target:'All',
       ageRange: {
         min: 18,
         max: 100
@@ -110,6 +108,7 @@ class CreateAdModal extends Component {
             <FormGroup controlId="formTarget">
               <ControlLabel>Target</ControlLabel>
               <FormControl
+                value={this.state.target}
                 componentClass="select"
                 placeholder="Seleccionar target de la publicidad"
                 onChange={this.handleTargetChange}>
