@@ -5,20 +5,30 @@ import ComplaintsReport from './ComplaintsReport/ComplaintsReport'
 import { loadComplaintsByType } from '../../Services/ReportsService'
 import Loading from '../../Components/Loading/Loading'
 import { Button } from 'react-bootstrap'
+import DatePickers from './DatePicker/DatePickers'
 
 class ReportsPage extends Component {
 
   state = {
-    complaintsReport: false,
+    reportSelected: '',
     complaintsByType: {},
     ready: true
   }
 
+  onDatesSelected = (startDate, endDate) => {
+    this.setState( { ready: false } )
+    if (this.state.reportSelected === 'complaints') {
+      loadComplaintsByType(startDate, endDate)
+        .then(complaintsByType => this.setState({ complaintsByType }))
+        .then(() => this.setState({ ready: true }))
+    } else {
+      // Load the other report data
+      this.setState({ ready: true })
+    }
+  }
+
   onComplaintsReportClick = () => {
-    this.setState( { ready: false, complaintsReport: true } )
-    loadComplaintsByType()
-      .then( complaintsByType => this.setState( { complaintsByType } ) )
-      .then( () => this.setState( { ready: true } ) )
+    this.setState( { reportSelected: 'complaints' } )
   }
 
   render () {
@@ -32,9 +42,10 @@ class ReportsPage extends Component {
             {/* TODO: Cambiar cuando se haga el reporte de usuarios */}
             <Button className={styles.reportButtons} onClick={this.onComplaintsReportClick}>Usuarios</Button>
           </div>
+          {this.state.reportSelected && <DatePickers onNewDate={this.onDatesSelected}/>}
           {!this.state.ready &&
           <Loading message="Cargando datos" size={150}/> }
-          {this.state.ready && this.state.complaintsReport &&
+          {this.state.ready && this.state.reportSelected === 'complaints' &&
           <ComplaintsReport complaintsByType={this.state.complaintsByType} />}
         </div>
       </div>

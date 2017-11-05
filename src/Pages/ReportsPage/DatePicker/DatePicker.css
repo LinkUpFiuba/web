@@ -1,0 +1,24 @@
+.dates {
+    display: flex;
+    align-items: center;
+}
+
+.button {
+    margin-left: 50px;
+}
+
+.date {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pickers {
+    margin: 0 0 0 10px;
+}
+
+.noMargin {
+    margin: 0;
+}
+
+
