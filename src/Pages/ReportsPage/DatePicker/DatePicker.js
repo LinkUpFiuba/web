@@ -7,8 +7,8 @@ export class DatePicker extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      month: '',
-      year: ''
+      month: this.props.defaultMonth,
+      year: this.props.defaultYear
     }
   }
 
@@ -35,6 +35,7 @@ export class DatePicker extends Component {
                 <FormControl
                   componentClass="select"
                   placeholder="Mes"
+                  defaultValue={this.props.defaultMonth}
                   onChange={this.handleMonthChange}>
                   <option value="01">Enero</option>
                   <option value="02">Febrero</option>
@@ -54,6 +55,7 @@ export class DatePicker extends Component {
                 <FormControl
                   componentClass="select"
                   placeholder="Año"
+                  defaultValue={this.props.defaultYear}
                   onChange={this.handleYearChange}>
                   <option value="2015">2015</option>
                   <option value="2016">2016</option>

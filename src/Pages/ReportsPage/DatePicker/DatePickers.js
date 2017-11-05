@@ -8,12 +8,17 @@ class DatePickers extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      startMonth: '',
-      startYear: '',
-      endMonth: '',
-      endYear: ''
+      startMonth: this.defaultStartMonth,
+      startYear: this.defaultStartYear,
+      endMonth: this.defaultEndMonth,
+      endYear: this.defaultEndYear
     }
   }
+
+  defaultStartMonth = '09'
+  defaultStartYear = '2017'
+  defaultEndMonth = '11'
+  defaultEndYear = '2017'
 
   handleStartMonthChange = month => {
     this.setState({ startMonth: month })
@@ -43,10 +48,14 @@ class DatePickers extends Component {
         <div>
           <DatePicker
             label="Desde"
+            defaultMonth={this.defaultStartMonth}
+            defaultYear={this.defaultStartYear}
             onMonthChange={this.handleStartMonthChange}
             onYearChange={this.handleStartYearChange} />
           <DatePicker
             label="Hasta"
+            defaultMonth={this.defaultEndMonth}
+            defaultYear={this.defaultEndYear}
             onMonthChange={this.handleEndMonthChange}
             onYearChange={this.handleEndYearChange} />
         </div>
