@@ -37,8 +37,8 @@ class DatePickers extends Component {
   }
 
   handleOnClick = () => {
-    const startDate = `${this.state.startYear}-${this.state.startMonth}`
-    const endDate = `${this.state.endYear}-${this.state.endMonth}`
+    const startDate = `${this.state.startYear ? `${this.state.startYear}-${this.state.startMonth}` : undefined}`
+    const endDate = `${this.state.endYear ? `${this.state.endYear}-${this.state.endMonth}` : undefined}`
     if (this.props.onNewDate) this.props.onNewDate(startDate, endDate)
   }
 

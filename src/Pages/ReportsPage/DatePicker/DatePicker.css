@@ -17,6 +17,10 @@
     margin: 0 0 0 10px;
 }
 
+input[type=checkbox] {
+    margin: 0 0 0 10px;
+}
+
 .noMargin {
     margin: 0;
 }

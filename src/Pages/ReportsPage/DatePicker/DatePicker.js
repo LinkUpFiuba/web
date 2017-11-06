@@ -8,7 +8,8 @@ export class DatePicker extends Component {
     super(props)
     this.state = {
       month: this.props.defaultMonth,
-      year: this.props.defaultYear
+      year: this.props.defaultYear,
+      isSelected: true
     }
   }
 
@@ -24,6 +25,13 @@ export class DatePicker extends Component {
     if (this.props.onYearChange) this.props.onYearChange(year)
   }
 
+  handleCheckboxChange = () => {
+    this.setState({ isSelected: !this.state.isSelected }, () => {
+      if (this.props.onMonthChange) this.props.onMonthChange(this.state.isSelected ? this.state.month : undefined)
+      if (this.props.onYearChange) this.props.onYearChange(this.state.isSelected ? this.state.year : undefined)
+    })
+  }
+
   render() {
     return (
       <div>
@@ -35,6 +43,7 @@ export class DatePicker extends Component {
                 <FormControl
                   componentClass="select"
                   placeholder="Mes"
+                  disabled={!this.state.isSelected}
                   defaultValue={this.props.defaultMonth}
                   onChange={this.handleMonthChange}>
                   <option value="01">Enero</option>
@@ -55,6 +64,7 @@ export class DatePicker extends Component {
                 <FormControl
                   componentClass="select"
                   placeholder="Año"
+                  disabled={!this.state.isSelected}
                   defaultValue={this.props.defaultYear}
                   onChange={this.handleYearChange}>
                   <option value="2015">2015</option>
@@ -64,6 +74,12 @@ export class DatePicker extends Component {
                   <option value="2019">2019</option>
                 </FormControl>
               </FormGroup>
+              <input
+                name="isSelected"
+                type="checkbox"
+                checked={this.state.isSelected}
+                onChange={this.handleCheckboxChange}
+                className={styles.pickers} />
             </div>
           </div>
         </form>
