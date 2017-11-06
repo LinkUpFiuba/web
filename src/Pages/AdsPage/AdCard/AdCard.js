@@ -24,7 +24,7 @@ class AdCard extends Component {
   render () {
     return (
       <div className={styles.cardBody}>
-        <img width={250} height={250} src={this.props.ad.image}/>
+        <img width={250} height={250} alt="Imagen" src={this.props.ad.image}/>
         <div className={styles.combo}>
           <h2>{this.props.ad.title}</h2>
           <div className={styles.delete}>

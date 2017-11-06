@@ -30,10 +30,10 @@ function handleErrors ( response ) {
     console.log('Error:')
     console.log( response)
     if ( response.status === 404 ) {
-      throw { status: response.status, message: response.message }
+      throw Error({ status: response.status, message: response.message })
     }
     console.log(response.message)
-    throw Error( response.status )
+    throw Error(response.status)
   }
   return response
 }
