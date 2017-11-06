@@ -39,8 +39,6 @@ class ComplaintsReport extends Component {
         target: "data",
         mutation: props => {
           this.handleClick(props.datum.x)
-          const fill = props.style && props.style.fill
-          return fill === "#c43a31" ? null : { style: { fill: "#c43a31" } }
         }
       }
     ]
@@ -48,16 +46,23 @@ class ComplaintsReport extends Component {
 
   render () {
     const complaintsByType = this.transformComplaintsTypeData(this.props.complaintsByType)
+    const disabledUsersForType = this.state.disabledUsersForType.filter(category => category.y !== 0)
     return (
       <div className={styles.container}>
+        {complaintsByType.length === 0 &&
+        <div className={styles.half}>
+          <span className={styles.error}>No se encontraron denuncias en ese rango de fechas</span>
+        </div>}
+        {complaintsByType.length > 0 &&
         <div className={styles.half}>
           <h4>Cantidad de denuncias según el tipo</h4>
           <div className={styles.chart}>
             <VictoryPie
               data={complaintsByType}
               colorScale="qualitative"
-              labelRadius={70}
-              style={{ labels: { fill: "white", fontSize: 10 } }}
+              labelRadius={complaintsByType.length === 1 ? 1 : 70}
+              padding={{ top: 10, bottom: 10 }}
+              style={{ labels: { fill: "white", fontSize: 14 } }}
               events={[{
                 target: "data",
                 eventHandlers: {
@@ -65,21 +70,22 @@ class ComplaintsReport extends Component {
                 }
               }]} />
           </div>
-          <div className={styles.chart}>
+          <div className={styles.center}>
             <ComplaintsTypeList data={complaintsByType} type='denuncias'/>
           </div>
-        </div>
-        {this.state.disabledUsersForType.length > 0 &&
+        </div>}
+        {disabledUsersForType.length > 0 &&
         <div className={styles.half}>
           <h4>{`Usuarios con denuncias de tipo "${translateComplaintType(this.state.selected)}"`}</h4>
           <div className={styles.chart}>
             <VictoryPie
-              data={this.state.disabledUsersForType.filter(category => category.y !== 0)}
+              data={disabledUsersForType}
               colorScale="qualitative"
-              labelRadius={70}
-              style={{ labels: { fill: "white", fontSize: 10 } }} />
+              padding={{ top: 10, bottom: 10 }}
+              labelRadius={disabledUsersForType.length === 1 ? 1 : 70}
+              style={{ labels: { fill: "white", fontSize: 14 } }} />
           </div>
-          <div className={styles.chart}>
+          <div className={styles.center}>
             <ComplaintsTypeList data={this.state.disabledUsersForType} type='usuarios'/>
           </div>
         </div>}

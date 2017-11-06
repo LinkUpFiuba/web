@@ -13,6 +13,10 @@
     margin-left: 10px;
 }
 
+.selected {
+    background-color: #e6e6e6;
+}
+
 h1 {
     margin-bottom: 24px
 }

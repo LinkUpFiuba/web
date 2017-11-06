@@ -3,6 +3,11 @@
 }
 
 .chart {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.center {
     width: 80%;
     margin: 0 auto;
 }
@@ -10,6 +15,11 @@
 .container {
     display: flex;
     justify-content: space-between;
+}
+
+.error {
+    font-style: italic;
+    color: red;
 }
 
 h4 {

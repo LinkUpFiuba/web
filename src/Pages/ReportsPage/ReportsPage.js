@@ -29,19 +29,26 @@ class ReportsPage extends Component {
   }
 
   onComplaintsReportClick = () => {
-    this.setState( { reportSelected: 'complaints' } )
+    this.setState({ reportSelected: 'complaints', datesSelected: false })
+  }
+
+  onUsersReportClick = () => {
+    this.setState({ reportSelected: 'users', datesSelected: false })
   }
 
   render () {
+    const isComplaintsSelected = this.state.reportSelected === 'complaints'
+    const isUsersSelected = this.state.reportSelected === 'users'
+    const complaintsButtonClasses = [styles.reportButtons, isComplaintsSelected ? styles.selected : null].join(' ')
+    const usersButtonClasses = [styles.reportButtons, isUsersSelected ? styles.selected : null].join(' ')
     return (
       <div>
         <FullNavBar auth={this.props.auth} history={this.props.history}/>
         <div className={styles.body}>
           <div className={styles.title}>
             <h1>Reportes</h1>
-            <Button className={styles.reportButtons} onClick={this.onComplaintsReportClick}>Denuncias</Button>
-            {/* TODO: Cambiar cuando se haga el reporte de usuarios */}
-            <Button className={styles.reportButtons} onClick={this.onComplaintsReportClick}>Usuarios</Button>
+            <Button className={complaintsButtonClasses} onClick={this.onComplaintsReportClick}>Denuncias</Button>
+            <Button className={usersButtonClasses} onClick={this.onUsersReportClick}>Usuarios</Button>
           </div>
           {this.state.reportSelected && <DatePickers onNewDate={this.onDatesSelected}/>}
           {!this.state.ready &&
