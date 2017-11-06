@@ -1,19 +1,16 @@
 import React, { Component } from 'react'
 import { Button, ControlLabel, FormControl, FormGroup, Modal } from 'react-bootstrap'
 import styles from './CreateAdModal.css'
-import Slider from 'rc-slider';
-import createSliderWithTooltip from 'rc-slider/es/createSliderWithTooltip'
 import InputRange from 'react-input-range';
 class CreateAdModal extends Component {
 
   constructor ( props ) {
     super( props )
-
-    this.state = {
+    this.state =  props.ad || {
       title: '',
       image: '',
       state: 'Active',
-      target: 'All',
+      target: 'all',
       ageRange: {
         min: 18,
         max: 100
@@ -60,16 +57,34 @@ class CreateAdModal extends Component {
     this.props.create( title, image, state, target, ageRange)
   }
 
+  handleUpdateButtonOnClick = () => {
+    const title = this.state.title
+    const image = this.state.image
+    const state = this.state.state
+    const target = this.state.target
+    const ageRange = this.state.ageRange
+    this.setState({
+      title :'',
+      image : '',
+      state: 'Active',
+      target:'All',
+      ageRange: {
+        min: 18,
+        max: 100
+      }
+    })
+    this.props.update(this.props.ad.uid, {title, image, state, target, ageRange})
+  }
+
   areFieldsReady = () => {
     return this.state.title.replace(/ /g,'') !== '' && this.state.image.replace(/ /g,'') !== ''
   }
 
   render () {
-    const Range = createSliderWithTooltip(Slider.Range);
     return (
       <Modal show={this.props.show} onHide={this.props.onClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Crear publicidad</Modal.Title>
+          <Modal.Title>{this.props.update ? 'Modificar publicidad' : 'Crear publicidad'}</Modal.Title>
         </Modal.Header>
         <div className={styles.form}>
           <form>
@@ -78,7 +93,7 @@ class CreateAdModal extends Component {
               <FormControl
                 type="text"
                 value={this.state.title}
-                placeholder="Ingreso titulo"
+                placeholder= "Ingreso titulo"
                 onChange={this.handleTitleChange}
               />
             </FormGroup>
@@ -93,6 +108,7 @@ class CreateAdModal extends Component {
             <FormGroup controlId="formTarget">
               <ControlLabel>Target</ControlLabel>
               <FormControl
+                value={this.state.target}
                 componentClass="select"
                 placeholder="Seleccionar target de la publicidad"
                 onChange={this.handleTargetChange}>
@@ -126,7 +142,9 @@ class CreateAdModal extends Component {
         <Modal.Footer>
           <Button bsStyle="danger" onClick={this.props.onClose}>Cancelar</Button>
           {this.areFieldsReady() &&
-          <Button bsStyle="success" onClick={this.handleCreateButtonOnClick}>Crear</Button>}
+          <Button bsStyle="success" onClick={this.props.update ? this.handleUpdateButtonOnClick : this.handleCreateButtonOnClick}>
+            {this.props.update ? 'Editar' : 'Crear'}
+            </Button>}
           {!this.areFieldsReady() &&
           <Button bsStyle="success" disabled>Crear</Button>}
         </Modal.Footer>

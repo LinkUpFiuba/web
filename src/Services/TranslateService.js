@@ -12,10 +12,10 @@ export const translateState = state => {
 export const translateGender= gender => {
   switch (gender) {
     case 'male':
-      return 'Hombre'
+      return 'Hombres'
     case 'female':
-      return 'Mujer'
-    case 'All':
+      return 'Mujeres'
+    case 'all':
       return 'Todos'
     default:
       return gender
