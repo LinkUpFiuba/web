@@ -8,7 +8,7 @@ import { Component } from 'react/lib/ReactBaseClasses'
 class FullNavBar extends Component {
 
   complaintsRoute = 'complaints'
-  adsRoute = 'router'
+  adsRoute = 'ads'
   reportsRoute = 'reports'
 
   handleSignOut = () => {
