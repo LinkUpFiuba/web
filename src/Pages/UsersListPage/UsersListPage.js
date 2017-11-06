@@ -36,7 +36,7 @@ class UsersListPage extends Component {
             <Button className={styles.reloadComplaints} onClick={this.reloadComplaints}>  Recargar </Button>
           </div>
           {!this.state.ready &&
-            <Loading message="Cargando usuarios" size="150"/> }
+            <Loading message="Cargando usuarios" size={150}/> }
           {this.state.ready &&
           <ComplaintsList complaints={this.state.complaints}/>}
         </div>
