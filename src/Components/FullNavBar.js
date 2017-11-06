@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/href-no-hash */
+
 import React from 'react'
 import { Navbar, NavItem } from 'react-bootstrap'
 import Nav from 'react-bootstrap/es/Nav'
