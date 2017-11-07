@@ -4,7 +4,7 @@ import styles from './ReportsPage.css'
 import ComplaintsReport from './ComplaintsReport/ComplaintsReport'
 import { loadComplaintsByType } from '../../Services/ReportsService'
 import Loading from '../../Components/Loading/Loading'
-import { Button } from 'react-bootstrap'
+import { DropdownButton, MenuItem } from 'react-bootstrap'
 import DatePickers from './DatePicker/DatePickers'
 
 class ReportsPage extends Component {
@@ -28,27 +28,26 @@ class ReportsPage extends Component {
     }
   }
 
-  onComplaintsReportClick = () => {
-    this.setState({ reportSelected: 'complaints', datesSelected: false })
-  }
-
-  onUsersReportClick = () => {
-    this.setState({ reportSelected: 'users', datesSelected: false })
+  onReportSelect = key => {
+    this.setState({ reportSelected: key, datesSelected: false })
   }
 
   render () {
-    const isComplaintsSelected = this.state.reportSelected === 'complaints'
-    const isUsersSelected = this.state.reportSelected === 'users'
-    const complaintsButtonClasses = [styles.reportButtons, isComplaintsSelected ? styles.selected : null].join(' ')
-    const usersButtonClasses = [styles.reportButtons, isUsersSelected ? styles.selected : null].join(' ')
+    const isComplaintsSelected = this.state.reportSelected === 'complaints' && 'Denuncias'
+    const isUsersSelected = this.state.reportSelected === 'users' && 'Usuarios'
+    const dropdownTitle = isComplaintsSelected || isUsersSelected || "Elija el tipo"
     return (
       <div>
         <FullNavBar auth={this.props.auth} history={this.props.history}/>
         <div className={styles.body}>
           <div className={styles.title}>
             <h1>Reportes</h1>
-            <Button className={complaintsButtonClasses} onClick={this.onComplaintsReportClick}>Denuncias</Button>
-            <Button className={usersButtonClasses} onClick={this.onUsersReportClick}>Usuarios</Button>
+            <div className={styles.reportSelector}>
+              <DropdownButton title={dropdownTitle} id="reports">
+                <MenuItem onSelect={this.onReportSelect} eventKey="complaints">Denuncias</MenuItem>
+                <MenuItem onSelect={this.onReportSelect} eventKey="users">Usuarios</MenuItem>
+              </DropdownButton>
+            </div>
           </div>
           {this.state.reportSelected && <DatePickers onNewDate={this.onDatesSelected}/>}
           {!this.state.ready &&
