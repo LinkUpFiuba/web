@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styles from './ComplaintCard.css'
-import { translateGender, translateState } from '../../../../Services/TranslateService'
+import { translateGender, translateState, translateComplaintType } from '../../../../Services/TranslateService'
 
 class ComplaintCard extends Component {
 
@@ -11,6 +11,7 @@ class ComplaintCard extends Component {
   translateComplaint ( complaint ) {
     complaint.state = translateState( complaint.state )
     complaint.gender = translateGender( complaint.sex )
+    complaint.type = translateComplaintType( complaint.type )
   }
 
   render () {
@@ -19,7 +20,8 @@ class ComplaintCard extends Component {
     return (
       <div className={styles.cardBody}>
         <h2>{complaint.state}</h2>
-        <h5>Usuario Denunciante: { complaint.userName }</h5>
+        <h5>Tipo: {complaint.type}</h5>
+        <h5>Usuario denunciante: { complaint.userName }</h5>
         <h5>Edad: { complaint.age }</h5>
         <h5>Género: { complaint.gender }</h5>
         <h5>Fecha: { complaint.timeStamp }</h5>

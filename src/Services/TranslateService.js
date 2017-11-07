@@ -9,11 +9,15 @@ export const translateState = state => {
   }
 }
 
-export const translateGender= gender => {
+export const translateGender = gender => {
   switch (gender) {
     case 'male':
+      return 'Hombre'
+    case 'males':
       return 'Hombres'
     case 'female':
+      return 'Mujer'
+    case 'females':
       return 'Mujeres'
     case 'all':
       return 'Todos'
@@ -22,7 +26,7 @@ export const translateGender= gender => {
   }
 }
 
-export const translateCondition= condition => {
+export const translateCondition = condition => {
   switch (condition) {
     case 'Active':
       return 'Activo'
@@ -33,7 +37,7 @@ export const translateCondition= condition => {
   }
 }
 
-export const translateAdState= state => {
+export const translateAdState = state => {
   switch (state) {
     case 'Active':
       return 'Activa'
@@ -41,5 +45,20 @@ export const translateAdState= state => {
       return 'Deshabilitada'
     default:
       return state
+  }
+}
+
+export const translateComplaintType = type => {
+  switch (type) {
+    case 'spam':
+      return 'Spam'
+    case 'inappropiate-message':
+      return 'Mensaje inapropiado'
+    case 'suspicious':
+      return 'Comportamiento sospechoso'
+    case 'other':
+      return 'Otros'
+    default:
+      return type
   }
 }
