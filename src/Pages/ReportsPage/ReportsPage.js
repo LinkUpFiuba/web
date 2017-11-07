@@ -27,20 +27,26 @@ class ReportsPage extends Component {
     } else {
       // Load the other report data
       const usersData = {
-        users: {
-          '2017-05': 2,
-          '2017-06': 3,
-          '2017-07': 5,
-          '2017-08': 4,
-          '2017-09': 10
+        '2017-05': {
+          users: 1,
+          premiumUsers: 0
         },
-        premiumUsers: {
-          '2017-05': 0,
-          '2017-06': 1,
-          '2017-07': 2,
-          '2017-08': 3,
-          '2017-09': 7
-        }
+        '2017-06': {
+          users: 3,
+          premiumUsers: 1
+        },
+        '2017-07': {
+          users: 5,
+          premiumUsers: 2
+        },
+        '2017-08': {
+          users: 4,
+          premiumUsers: 3
+        },
+        '2017-09': {
+          users: 10,
+          premiumUsers: 7
+        },
       }
       this.setState({ ready: true, datesSelected: true, users: usersData })
     }

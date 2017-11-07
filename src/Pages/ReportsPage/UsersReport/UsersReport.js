@@ -13,17 +13,21 @@ class UsersReport extends Component {
     }
   }
 
-  transformUsersData = data => {
-    return Object.keys(data).map(key => {
-      return { x: key, y: data[key] }
+  transformUsersData = (data) => {
+    const usersData = []
+    const premiumUsersData = []
+    // eslint-disable-next-line array-callback-return
+    Object.keys(data).map(key => {
+      usersData.push({ x: key, y: data[key].users })
+      premiumUsersData.push({ x: key, y: data[key].premiumUsers })
     })
+    return { usersData, premiumUsersData }
   }
 
   render () {
     const usersColor = "#c43a31"
     const premiumUsersColors = "#313ac4"
-    const usersData = this.transformUsersData(this.props.usersData.users)
-    const premiumUsersData = this.transformUsersData(this.props.usersData.premiumUsers)
+    const { usersData, premiumUsersData } = this.transformUsersData(this.props.usersData)
     const domain = { y: [0, Math.max.apply(Math, usersData.map(o => o.y))] }
     return (
       <div>
