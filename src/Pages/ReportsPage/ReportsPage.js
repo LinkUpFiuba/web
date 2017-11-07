@@ -6,12 +6,14 @@ import { loadComplaintsByType } from '../../Services/ReportsService'
 import Loading from '../../Components/Loading/Loading'
 import { DropdownButton, MenuItem } from 'react-bootstrap'
 import DatePickers from './DatePicker/DatePickers'
+import UsersReport from "./UsersReport/UsersReport"
 
 class ReportsPage extends Component {
 
   state = {
     reportSelected: '',
     complaintsByType: {},
+    users: {},
     ready: true,
     datesSelected: false,
   }
@@ -24,7 +26,23 @@ class ReportsPage extends Component {
         .then(() => this.setState({ ready: true, datesSelected: true }))
     } else {
       // Load the other report data
-      this.setState({ ready: true, datesSelected: true })
+      const usersData = {
+        users: {
+          '2017-05': 2,
+          '2017-06': 3,
+          '2017-07': 5,
+          '2017-08': 4,
+          '2017-09': 10
+        },
+        premiumUsers: {
+          '2017-05': 0,
+          '2017-06': 1,
+          '2017-07': 2,
+          '2017-08': 3,
+          '2017-09': 7
+        }
+      }
+      this.setState({ ready: true, datesSelected: true, users: usersData })
     }
   }
 
@@ -54,6 +72,8 @@ class ReportsPage extends Component {
           <Loading message="Cargando datos" size={150}/> }
           {this.state.ready && this.state.datesSelected && this.state.reportSelected === 'complaints' &&
           <ComplaintsReport complaintsByType={this.state.complaintsByType} />}
+          {this.state.ready && this.state.datesSelected && this.state.reportSelected === 'users' &&
+          <UsersReport usersData={this.state.users} />}
         </div>
       </div>
     )

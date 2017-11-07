@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.chart {
+    width: 50%;
+    margin: -50px auto -20px auto;
+}
+
+.list {
+    width: 30%;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+}
+
+.users {
+    color: #c43a31;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.premiumUsers {
+    color: #313ac4;
+    margin-left: 5px;
+    margin-right: 5px;
+}
