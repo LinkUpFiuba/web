@@ -1,0 +1,28 @@
+.half {
+    width: 50%;
+}
+
+.chart {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.center {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.error {
+    margin-left: 20px;
+    font-style: italic;
+    color: red;
+}
+
+h4 {
+    text-align: center;
+}

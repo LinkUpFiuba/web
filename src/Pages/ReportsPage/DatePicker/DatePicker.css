@@ -1,0 +1,27 @@
+.dates {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.button {
+    margin-left: 50px;
+}
+
+.date {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pickers {
+    margin: 0 0 0 10px;
+}
+
+input[type=checkbox] {
+    margin: 0 0 0 10px;
+}
+
+.noMargin {
+    margin: 0;
+}

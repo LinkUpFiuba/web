@@ -8,7 +8,8 @@ import {
 import UsersListPage from './Pages/UsersListPage/UsersListPage'
 import ComplaintUserPage from './Pages/ComplaintUserPage/ComplaintUserPage'
 import AdsPage from './Pages/AdsPage/AdsPage'
-import Cookies from 'universal-cookie';
+import ReportsPage from './Pages/ReportsPage/ReportsPage'
+import Cookies from 'universal-cookie'
 
 class App extends Component {
 
@@ -21,6 +22,7 @@ class App extends Component {
           <PrivateRoute path="/usersList/:userId" componentProps={{ auth: auth }} component={ComplaintUserPage}/>
           <PrivateRoute path="/usersList" componentProps={{ auth: auth }} component={UsersListPage}/>
           <PrivateRoute path="/ads" componentProps={{auth:auth}} component={AdsPage} />
+          <PrivateRoute path="/reports" componentProps={{auth:auth}} component={ReportsPage} />
           <PrivateRoute path="//" component={Home}/>
         </div>
       </Router>
