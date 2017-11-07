@@ -99,6 +99,9 @@ class CreateAdModal extends Component {
             </FormGroup>
             <FormGroup controlId="formInlineEmail">
               <ControlLabel>Link a imagen</ControlLabel>
+              <div className={styles.help}>
+                <span className={styles.italic}>{"\nTe recomendamos que la imagen sea tipo portaretrato y tenga una proporción 3:4 (Por ejemplo 750x1000)"}</span>
+              </div>
               <FormControl
                 type="link"
                 onChange={this.handleImageChange}
@@ -106,11 +109,11 @@ class CreateAdModal extends Component {
                 placeholder="http://link.to.image.com/image.jpg"/>
             </FormGroup>
             <FormGroup controlId="formTarget">
-              <ControlLabel>Target</ControlLabel>
+              <ControlLabel>Género destinado</ControlLabel>
               <FormControl
                 value={this.state.target}
                 componentClass="select"
-                placeholder="Seleccionar target de la publicidad"
+                placeholder="Seleccionar género destinado de la publicidad"
                 onChange={this.handleTargetChange}>
                 <option value="all">Todos</option>
                 <option value="male">Hombres</option>
@@ -134,7 +137,7 @@ class CreateAdModal extends Component {
                 placeholder="Seleccionar estado inicial"
                 onChange={this.handleStateChange}>
                 <option value="Active">Activa</option>
-                <option value="Disabled">Inhabilitada (no va a ser mostrada a los usuarios)</option>
+                <option value="Disabled">Inhabilitada (No va a ser mostrada a los usuarios)</option>
               </FormControl>
             </FormGroup>
           </form>

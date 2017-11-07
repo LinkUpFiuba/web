@@ -7,3 +7,13 @@
 .inputRange {
     margin: 10px;
 }
+
+.italic {
+    font-style: italic;
+    font-size: 12px;
+}
+
+.help {
+    margin-top: -5px;
+    margin-bottom: 5px;
+}

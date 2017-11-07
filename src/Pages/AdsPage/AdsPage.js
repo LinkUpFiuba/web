@@ -76,7 +76,7 @@ class AdsPage extends Component {
 
   render () {
     const allCards = this.state.ready && this.state.ads.map( ad =>
-        <div className={styles.grow}>
+        <div className={styles.grow} key={ad.uid}>
           <AdCard update={this.handleUpdateAdButtonOnClick} enable={this.handleEnableAdClick} disable={this.handleDisableAdClick} delete={this.handleDeleteAd} ad={ad}/>
         </div>
       )
