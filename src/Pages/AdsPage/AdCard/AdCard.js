@@ -22,9 +22,10 @@ class AdCard extends Component {
   }
 
   render () {
+    const target = `${this.props.ad.target}${this.props.ad.target !== 'all' ? 's' : ''}`
     return (
       <div className={styles.cardBody}>
-        <img width={250} height={250} alt="Imagen" src={this.props.ad.image}/>
+        <img width={240} height={320} alt="Imagen" src={this.props.ad.image}/>
         <div className={styles.combo}>
           <h2>{this.props.ad.title}</h2>
           <div className={styles.delete}>
@@ -36,7 +37,7 @@ class AdCard extends Component {
             </Button>
           </div>
         </div>
-        <h5>Target: {translateGender( this.props.ad.target )}</h5>
+        <h5>Género destinado: {translateGender( target )}</h5>
         <h5>Rango de Edad: {this.props.ad.ageRange.min} - {this.props.ad.ageRange.max} años</h5>
         <div className={styles.combo}>
           <h5>Estado: {translateAdState( this.props.ad.state )}</h5>
