@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import FullNavBar from '../../Components/FullNavBar'
 import styles from './ReportsPage.css'
 import ComplaintsReport from './ComplaintsReport/ComplaintsReport'
-import { loadComplaintsByType } from '../../Services/ReportsService'
+import { loadComplaintsByType, loadUsersPerMonth } from '../../Services/ReportsService'
 import Loading from '../../Components/Loading/Loading'
 import { DropdownButton, MenuItem } from 'react-bootstrap'
 import DatePickers from './DatePicker/DatePickers'
@@ -24,30 +24,9 @@ class ReportsPage extends Component {
         .then(complaintsByType => this.setState({ complaintsByType }))
         .then(() => this.setState({ ready: true }))
     } else if (this.state.reportSelected === 'users') {
-      // Load the other report data
-      const usersData = {
-        '2017-05': {
-          users: 1,
-          premiumUsers: 0
-        },
-        '2017-06': {
-          users: 3,
-          premiumUsers: 1
-        },
-        '2017-07': {
-          users: 5,
-          premiumUsers: 2
-        },
-        '2017-08': {
-          users: 4,
-          premiumUsers: 3
-        },
-        '2017-09': {
-          users: 10,
-          premiumUsers: 7
-        },
-      }
-      this.setState({ ready: true, users: usersData })
+      loadUsersPerMonth(startDate, endDate)
+        .then(users => this.setState({ users }))
+        .then(() => this.setState({ ready: true }))
     }
   }
 
