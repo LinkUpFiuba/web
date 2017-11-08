@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Button } from 'react-bootstrap'
 import styles from './DatePicker.css'
 import { DatePicker } from "./DatePicker"
 
@@ -21,22 +20,30 @@ class DatePickers extends Component {
   defaultEndYear = '2017'
 
   handleStartMonthChange = month => {
-    this.setState({ startMonth: month })
+    this.setState({ startMonth: month }, () => {
+      this.handleOnDateChange()
+    })
   }
 
   handleEndMonthChange = month => {
-    this.setState({ endMonth: month })
+    this.setState({ endMonth: month }, () => {
+      this.handleOnDateChange()
+    })
   }
 
   handleStartYearChange = year => {
-    this.setState({ startYear: year })
+    this.setState({ startYear: year }, () => {
+      this.handleOnDateChange()
+    })
   }
 
   handleEndYearChange = year => {
-    this.setState({ endYear: year })
+    this.setState({ endYear: year }, () => {
+      this.handleOnDateChange()
+    })
   }
 
-  handleOnClick = () => {
+  handleOnDateChange = () => {
     const startDate = `${this.state.startYear ? `${this.state.startYear}-${this.state.startMonth}` : undefined}`
     const endDate = `${this.state.endYear ? `${this.state.endYear}-${this.state.endMonth}` : undefined}`
     if (this.props.onNewDate) this.props.onNewDate(startDate, endDate)
@@ -45,7 +52,7 @@ class DatePickers extends Component {
   render() {
     return (
       <div className={styles.dates}>
-        <div>
+        <div className={styles.front}>
           <DatePicker
             label="Desde"
             defaultMonth={this.defaultStartMonth}
@@ -59,7 +66,6 @@ class DatePickers extends Component {
             onMonthChange={this.handleEndMonthChange}
             onYearChange={this.handleEndYearChange} />
         </div>
-        <Button className={styles.button} onClick={this.handleOnClick}>Actualizar</Button>
       </div>
     )
   }

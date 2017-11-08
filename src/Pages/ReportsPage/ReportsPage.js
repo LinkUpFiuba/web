@@ -14,17 +14,16 @@ class ReportsPage extends Component {
     reportSelected: '',
     complaintsByType: {},
     users: {},
-    ready: true,
-    datesSelected: false,
+    ready: true
   }
 
   onDatesSelected = (startDate, endDate) => {
-    this.setState( { ready: false } )
+    this.setState({ ready: false })
     if (this.state.reportSelected === 'complaints') {
       loadComplaintsByType(startDate, endDate)
         .then(complaintsByType => this.setState({ complaintsByType }))
-        .then(() => this.setState({ ready: true, datesSelected: true }))
-    } else {
+        .then(() => this.setState({ ready: true }))
+    } else if (this.state.reportSelected === 'users') {
       // Load the other report data
       const usersData = {
         '2017-05': {
@@ -48,12 +47,17 @@ class ReportsPage extends Component {
           premiumUsers: 7
         },
       }
-      this.setState({ ready: true, datesSelected: true, users: usersData })
+      this.setState({ ready: true, users: usersData })
     }
   }
 
   onReportSelect = key => {
-    this.setState({ reportSelected: key, datesSelected: false })
+    // This is to ensure that DatePickers will re-mount for every report selection.
+    // If I leave only the callback, the first time when changing the first time it won't load data.
+    // The only drawback with this is that when you change between reports, it restart the dates.
+    this.setState({ reportSelected: '', ready: false }, () => {
+      this.setState({ reportSelected: key })
+    })
   }
 
   render () {
@@ -76,9 +80,9 @@ class ReportsPage extends Component {
           {this.state.reportSelected && <DatePickers onNewDate={this.onDatesSelected}/>}
           {!this.state.ready &&
           <Loading message="Cargando datos" size={150}/> }
-          {this.state.ready && this.state.datesSelected && this.state.reportSelected === 'complaints' &&
+          {this.state.ready && this.state.reportSelected === 'complaints' &&
           <ComplaintsReport complaintsByType={this.state.complaintsByType} />}
-          {this.state.ready && this.state.datesSelected && this.state.reportSelected === 'users' &&
+          {this.state.ready && this.state.reportSelected === 'users' &&
           <UsersReport usersData={this.state.users} />}
         </div>
       </div>

@@ -9,7 +9,7 @@ export class DatePicker extends Component {
     this.state = {
       month: this.props.defaultMonth,
       year: this.props.defaultYear,
-      isSelected: true
+      isSelected: false
     }
   }
 
@@ -25,11 +25,19 @@ export class DatePicker extends Component {
     if (this.props.onYearChange) this.props.onYearChange(year)
   }
 
+  handleDateChange = () => {
+    if (this.props.onMonthChange) this.props.onMonthChange(this.state.isSelected ? this.state.month : undefined)
+    if (this.props.onYearChange) this.props.onYearChange(this.state.isSelected ? this.state.year : undefined)
+  }
+
   handleCheckboxChange = () => {
     this.setState({ isSelected: !this.state.isSelected }, () => {
-      if (this.props.onMonthChange) this.props.onMonthChange(this.state.isSelected ? this.state.month : undefined)
-      if (this.props.onYearChange) this.props.onYearChange(this.state.isSelected ? this.state.year : undefined)
+      this.handleDateChange()
     })
+  }
+
+  componentDidMount() {
+    this.handleDateChange()
   }
 
   render() {

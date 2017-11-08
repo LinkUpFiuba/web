@@ -4,8 +4,8 @@
     margin-left: 20px;
 }
 
-.button {
-    margin-left: 50px;
+.front {
+    z-index: 99;
 }
 
 .date {
