@@ -18,8 +18,9 @@ class UsersReport extends Component {
     const premiumUsersData = []
     // eslint-disable-next-line array-callback-return
     Object.keys(data).map(key => {
-      usersData.push({ x: key, y: data[key].users })
-      premiumUsersData.push({ x: key, y: data[key].premiumUsers })
+      const newKey = key.replace(/([0-9]{4})-([0-9]{2})/,"$2-$1")
+      usersData.push({ x: newKey, y: data[key].users })
+      premiumUsersData.push({ x: newKey, y: data[key].premiumUsers })
     })
     return { usersData, premiumUsersData }
   }
