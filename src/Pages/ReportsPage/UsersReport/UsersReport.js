@@ -28,7 +28,7 @@ class UsersReport extends Component {
     const usersColor = "#c43a31"
     const premiumUsersColors = "#313ac4"
     const { usersData, premiumUsersData } = this.transformUsersData(this.props.usersData)
-    const haveData = Object.keys(usersData).length > 0 || Object.keys(premiumUsersData).length > 0
+    const haveData = Object.keys(usersData).length > 0 && Object.keys(premiumUsersData).length > 0
     const domain = { y: [0, Math.max.apply(Math, usersData.map(o => o.y))] }
     return (
       <div>
