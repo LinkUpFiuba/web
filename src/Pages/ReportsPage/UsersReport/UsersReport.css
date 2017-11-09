@@ -17,6 +17,12 @@
     justify-content: center;
 }
 
+.error {
+    margin-left: 20px;
+    font-style: italic;
+    color: red;
+}
+
 .users {
     color: #c43a31;
     margin-left: 5px;
