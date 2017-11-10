@@ -30,7 +30,7 @@ class UsersReport extends Component {
     const premiumUsersColors = "#313ac4"
     const { usersData, premiumUsersData } = this.transformUsersData(this.props.usersData)
     const haveData = Object.keys(usersData).length > 0 && Object.keys(premiumUsersData).length > 0
-    const domain = { y: [0, Math.max.apply(Math, usersData.map(o => o.y))] }
+    const domain = { y: [0, Math.max.apply(Math, usersData.map(o => o.y)) + 1] }
     return (
       <div>
         {!haveData &&
@@ -40,29 +40,25 @@ class UsersReport extends Component {
         {haveData &&
         <div>
           <div className={styles.chart}>
-            <VictoryChart theme={VictoryTheme.grayscale}>
+            <VictoryChart theme={VictoryTheme.grayscale} domain={domain}>
               <VictoryLine
                 data={usersData}
                 interpolation="monotoneX"
-                domain={domain}
                 style={{ data: { stroke: usersColor } }}
               />
               <VictoryScatter
                 data={usersData}
-                size={5}
-                domain={domain}
+                size={3}
                 style={{ data: { fill: usersColor } }}
               />
               <VictoryLine
                 data={premiumUsersData}
                 interpolation="monotoneX"
-                domain={domain}
                 style={{ data: { stroke: premiumUsersColors } }}
               />
               <VictoryScatter
                 data={premiumUsersData}
-                size={5}
-                domain={domain}
+                size={3}
                 style={{ data: { fill: premiumUsersColors } }}
               />
             </VictoryChart>

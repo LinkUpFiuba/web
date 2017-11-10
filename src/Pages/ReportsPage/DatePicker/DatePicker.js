@@ -75,11 +75,9 @@ export class DatePicker extends Component {
                   disabled={!this.state.isSelected}
                   defaultValue={this.props.defaultYear}
                   onChange={this.handleYearChange}>
-                  <option value="2015">2015</option>
+                  {/*TODO: Here we could make a for since 2016 until current year*/}
                   <option value="2016">2016</option>
                   <option value="2017">2017</option>
-                  <option value="2018">2018</option>
-                  <option value="2019">2019</option>
                 </FormControl>
               </FormGroup>
               <input
