@@ -18,7 +18,7 @@ class UsersReport extends Component {
     const premiumUsersData = []
     // eslint-disable-next-line array-callback-return
     Object.keys(data).map(key => {
-      const newKey = key.replace(/([0-9]{4})-([0-9]{2})/,"$2-$1")
+      const newKey = key.replace(/([0-9]{4})-([0-9]{2})/,"$2/$1")
       usersData.push({ x: newKey, y: data[key].users })
       premiumUsersData.push({ x: newKey, y: data[key].premiumUsers })
     })
@@ -35,7 +35,7 @@ class UsersReport extends Component {
       <div>
         {!haveData &&
         <div>
-          <span className={styles.error}>No se encontraron usuarios activos en ese rango de fechas</span>
+          <span className={styles.error}>El rango de fechas especificado es incorrecto</span>
         </div>}
         {haveData &&
         <div>
