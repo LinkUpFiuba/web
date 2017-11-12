@@ -12,6 +12,12 @@ export const loadDisabledUsersForType = type => {
     .then(res => res.json())
 }
 
+export const loadUsersPerMonth = (startDate, endDate) => {
+  return fetch(`${baseUrl}/analytics/users?startDate=${startDate}&endDate=${endDate}`)
+    .then(handleErrors)
+    .then(res => res.json())
+}
+
 function handleErrors (response) {
   if (!response.ok) {
     console.log('Error:')
